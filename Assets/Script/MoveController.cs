@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//https://github.com/nhulemis/UnityTutorialPartyKiller/blob/Unity3DPartykiller/Assets/Scripts/Weapon.cs
 public class MoveController : MonoBehaviour
 {
     [SerializeField]
     Animator _animator;
+
 
     void Update()
     {
@@ -23,6 +25,7 @@ public class MoveController : MonoBehaviour
     }
     protected void AnimationIdleToShoot()
     {
+
         _animator.SetBool("idle", false);
         _animator.SetBool("shoot", true);
     }
