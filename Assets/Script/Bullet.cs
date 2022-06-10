@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
 
     public Transform _firePoint { get; set; }
+    public int _posPlayerShooting { get; set; }
     Rigidbody _rb;
     void Start()
     {
@@ -18,13 +19,12 @@ public class Bullet : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-
-        Destroy(collision.gameObject);
-        Destroy(this.gameObject);
-        GameController.instance.DeleteEnemyInList();
-        if (GameController.instance.CheckListEmty())
+        if (GameController.instance._listPlayer.Count > 1 && collision.gameObject.tag.Equals("Player") == true)
         {
-            //   GameController.instance.EndGame();
+            Destroy(collision.gameObject);
+            Destroy(this.gameObject);
+            GameController.instance.DeleteEnemyInList(_posPlayerShooting);
+
         }
 
     }
