@@ -40,8 +40,8 @@ public class BasePlayerController : MonoBehaviour
     protected void Shooting()
     {
         GameObject _newBullet = Instantiate(Resources.Load("Bullet", typeof(GameObject)), _posGun.position, _posGun.rotation) as GameObject;
-        _newBullet.GetComponent<Bullet>()._posPlayerShooting = GameController.instance.FindPlayerNear(transform)[1];
-        _newBullet.GetComponent<Bullet>()._firePoint = GameController.instance._listPlayer[GameController.instance.FindPlayerNear(transform)[1]].transform;
+        //  _newBullet.GetComponent<Bullet>()._posPlayerShooting = GameController.instance.FindPlayerNear(transform)[1];
+        // _newBullet.GetComponent<Bullet>()._firePoint = GameController.instance._listPlayer[GameController.instance.FindPlayerNear(transform)[1]].transform;
         Destroy(_newBullet, 5);
     }
     protected void PlayerLookAt()

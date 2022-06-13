@@ -8,7 +8,7 @@ public class EnemyController : BasePlayerController
     [SerializeField]
     float speed;
     float hp;
-
+    [SerializeField]
     Transform _moveToPlayer;
 
     [SerializeField]
@@ -29,7 +29,7 @@ public class EnemyController : BasePlayerController
     }
     void FindAndMovePlayer()
     {
-        _moveToPlayer = GameController.instance._listPlayer[randomPosition].transform;
+        //   _moveToPlayer = GameController.instance._listPlayer[randomPosition].transform;
 
         float distance = Vector3.Distance(transform.position, _moveToPlayer.position);
         if (distance <= 50f && distance >= 20f)

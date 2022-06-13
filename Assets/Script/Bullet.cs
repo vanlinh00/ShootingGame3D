@@ -11,21 +11,22 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
-        transform.position = Vector3.Lerp(transform.position, _firePoint.position, 400f);
+        //   transform.position = Vector3.Lerp(transform.position, _firePoint.position, 400f);
+        //transform.position = transform.position + Vector3.up;
     }
     void Update()
     {
-
+        transform.position = transform.position + Vector3.up;
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (GameController.instance._listPlayer.Count > 1 && collision.gameObject.tag.Equals("Player") == true)
-        {
-            Destroy(collision.gameObject);
-            Destroy(this.gameObject);
-            GameController.instance.DeleteEnemyInList(_posPlayerShooting);
+        //if (GameController.instance._listPlayer.Count > 1 && collision.gameObject.tag.Equals("Player") == true)
+        //{
+        //    Destroy(collision.gameObject);
+        //    Destroy(this.gameObject);
+        //    GameController.instance.DeleteEnemyInList(_posPlayerShooting);
 
-        }
+        //}
 
     }
 }
