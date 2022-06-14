@@ -8,7 +8,9 @@ public class GameController : MonoBehaviour
     [SerializeField]
     public List<GameObject> _listPlayer;
 
-    void Start()
+    [SerializeField]
+    public List<GameObject> _listPoint;
+    private void Awake()
     {
         instance = this;
     }

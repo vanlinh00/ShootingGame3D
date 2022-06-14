@@ -19,5 +19,21 @@ public class Test : MonoBehaviour
 
         //phep gan rotation
         // transform.rotation = Quaternion.Euler(120, 120, 0);
+
+        // di chuyen object B theo huong object A
+        //  transform.position = transform.position + objectA.position * Time.deltaTime;
+
+        // di chuyen object B theo huong thang
+        //  transform.position = transform.position + Vector3.forward;
+
+        // di chuyen object B theo huong thang
+        // transform.Translate(transform.forward);
+
+        //di chuyen object B den object A
+        // muon di chuyen thang B den A cho translate vao huong tu B den A 
+        // transform.Translate((objectA.position - transform.position) * Time.deltaTime);
+
+        // di chuyen object B theo huong A ma khong dung lai
+        // transform.Translate(objectA.position);
     }
 }

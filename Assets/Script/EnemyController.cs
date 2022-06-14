@@ -15,18 +15,42 @@ public class EnemyController : BasePlayerController
     CharacterController _characterController;
 
     int randomPosition;
+
     private void Awake()
     {
         hp = 3;
     }
     private void Start()
     {
-        randomPosition = ranDomPosPlayer();
+        // randomPosition = ranDomPosPlayer();
+
+        randomPosition = Random.RandomRange(0, GameController.instance._listPoint.Count - 1);
+        Debug.Log(randomPosition);
     }
     private void FixedUpdate()
     {
-        FindAndMovePlayer();
+        // FindAndMovePlayer();
+        MoveToPoint();
     }
+
+    void MoveToPoint()
+    {
+        transform.LookAt((GameController.instance._listPoint[randomPosition].transform.position));
+        transform.Translate((GameController.instance._listPoint[randomPosition].transform.position - transform.position) * speed);
+
+        if ((Vector3.Distance(transform.position, GameController.instance._listPoint[randomPosition].transform.position)) < 1f)
+        {
+            AnimationRunToIdle();
+        }
+        else
+        {
+            AnimationIdleToRun();
+        }
+    }
+
+
+
+    // ideal da delete
     void FindAndMovePlayer()
     {
         //   _moveToPlayer = GameController.instance._listPlayer[randomPosition].transform;

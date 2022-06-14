@@ -44,6 +44,8 @@ public class BasePlayerController : MonoBehaviour
         // _newBullet.GetComponent<Bullet>()._firePoint = GameController.instance._listPlayer[GameController.instance.FindPlayerNear(transform)[1]].transform;
         Destroy(_newBullet, 5);
     }
+
+    // ideal nay da xoa
     protected void PlayerLookAt()
     {
         int distancePlayerToPlayer = GameController.instance.FindPlayerNear(transform)[0];

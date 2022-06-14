@@ -22,11 +22,11 @@ public class PlayerController : BasePlayerController
     private void FixedUpdate()
     {
         MovePlayer();
-        //  Debug.Log(GameController.instance.FindPlayerNear(transform)[1]);
-        //  PlayerLookAt();
+
     }
     void MovePlayer()
     {
+
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
         // -5.43071
