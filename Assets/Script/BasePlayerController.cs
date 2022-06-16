@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-//https://github.com/nhulemis/UnityTutorialPartyKiller/blob/Unity3DPartykiller/Assets/Scripts/Weapon.cs
 public class BasePlayerController : MonoBehaviour
 {
     [SerializeField]
