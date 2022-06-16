@@ -10,12 +10,11 @@ public class GameController : MonoBehaviour
 
     [SerializeField]
     public List<GameObject> _listPoint;
+
     private void Awake()
     {
         instance = this;
     }
-
-
     void Update()
     {
 
@@ -32,6 +31,7 @@ public class GameController : MonoBehaviour
     {
         Time.timeScale = 0;
     }
+
     // return vi tri cua player gan nhat va vi tri cua no trong mang
     public int[] FindPlayerNear(Transform transformPlayer)
     {

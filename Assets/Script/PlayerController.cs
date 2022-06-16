@@ -15,11 +15,20 @@ public class PlayerController : BasePlayerController
 
     float turnSoothTime = 0.1f;
     float turnSoomthVelocity;
+
+    [SerializeField]
+    Transform _posGun;
+    Vector3 _shootPoint;
+
+    [SerializeField]
+    GameObject _testShoot;
+
+
     void Start()
     {
 
     }
-    private void FixedUpdate()
+    private void Update()
     {
         MovePlayer();
 
@@ -29,10 +38,34 @@ public class PlayerController : BasePlayerController
 
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
-        // -5.43071
-        Debug.Log(horizontalInput);
-        Debug.Log(verticalInput);
         Vector3 direction = new Vector3(horizontalInput, 0f, verticalInput).normalized;
+
+        Vector2 screenCenterPoint = new Vector2(Screen.width / 2f, Screen.height / 2f);
+        Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
+
+        if (Physics.Raycast(ray, out RaycastHit raycastHit))
+        {
+            _shootPoint = raycastHit.point;
+            transform.LookAt(_shootPoint);
+        }
+
+        if (Input.GetKeyDown("q"))
+        {
+            CameraController.instance.PlayerSniperCult(true);
+            UiController.instance.UiGun(false);
+            UiController.instance.UiSniperCult(true);
+        }
+        else if (Input.GetKeyUp("q"))
+        {
+            CameraController.instance.PlayerSniperCult(false);
+            UiController.instance.UiGun(true);
+            UiController.instance.UiSniperCult(false);
+            AnimationShootToIdle();
+        }
+        if (Input.GetMouseButtonDown(0))
+        {
+            Shooting();
+        }
 
         if (direction.magnitude >= 0.1f)
         {
@@ -48,17 +81,14 @@ public class PlayerController : BasePlayerController
         else
         {
             AnimationRunToIdle();
-            if (Input.GetKeyDown("space"))
-            {
-                AnimationIdleToShoot();
-                Shooting();
-            }
-            if (Input.GetKeyUp("space"))
-            {
-                AnimationShootToIdle();
 
-            }
         }
-    }
 
+    }
+    void Shooting()
+    {
+        GameObject _newBullet = Instantiate(Resources.Load("Bullet", typeof(GameObject)), _posGun.position, _posGun.rotation) as GameObject;
+        _newBullet.GetComponent<Bullet>()._firePoint = _shootPoint;
+        Destroy(_newBullet, 5);
+    }
 }

@@ -8,8 +8,7 @@ public class BasePlayerController : MonoBehaviour
     [SerializeField]
     Animator _animator;
 
-    [SerializeField]
-    Transform _posGun;
+    protected int health = 10000;
 
     void Update()
     {
@@ -37,14 +36,6 @@ public class BasePlayerController : MonoBehaviour
         _animator.SetBool("idle", true);
 
     }
-    protected void Shooting()
-    {
-        GameObject _newBullet = Instantiate(Resources.Load("Bullet", typeof(GameObject)), _posGun.position, _posGun.rotation) as GameObject;
-        //  _newBullet.GetComponent<Bullet>()._posPlayerShooting = GameController.instance.FindPlayerNear(transform)[1];
-        // _newBullet.GetComponent<Bullet>()._firePoint = GameController.instance._listPlayer[GameController.instance.FindPlayerNear(transform)[1]].transform;
-        Destroy(_newBullet, 5);
-    }
-
     // ideal nay da xoa
     protected void PlayerLookAt()
     {

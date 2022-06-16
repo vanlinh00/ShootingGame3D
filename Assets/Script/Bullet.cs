@@ -4,29 +4,28 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-
-    public Transform _firePoint { get; set; }
+    public Vector3 _firePoint { get; set; }
     public int _posPlayerShooting { get; set; }
-    Rigidbody _rb;
+
     void Start()
     {
-        _rb = GetComponent<Rigidbody>();
-        //   transform.position = Vector3.Lerp(transform.position, _firePoint.position, 400f);
-        //transform.position = transform.position + Vector3.up;
+
     }
-    void Update()
+    private void Update()
     {
-        transform.position = transform.position + Vector3.up;
+        //transform.position = transform.position + Vector3.up;
+        //    Debug.Log(_firePoint);
+        //transform.Translate((_firePoint - transform.position) * 0.01f);
+        transform.position = Vector3.Lerp(transform.position, _firePoint, 2f * Time.timeScale);
     }
     private void OnCollisionEnter(Collision collision)
     {
-        //if (GameController.instance._listPlayer.Count > 1 && collision.gameObject.tag.Equals("Player") == true)
-        //{
-        //    Destroy(collision.gameObject);
-        //    Destroy(this.gameObject);
-        //    GameController.instance.DeleteEnemyInList(_posPlayerShooting);
+        if (collision.gameObject.tag.Equals("Boss"))
+        {
+            GameObject _particleBullet = Instantiate(Resources.Load("ParticleBullet", typeof(GameObject)), _firePoint, Quaternion.identity) as GameObject;
+            collision.gameObject.GetComponent<EnemyController>().muHealp(0.1f);
+            Destroy(_particleBullet, 1);
 
-        //}
-
+        }
     }
 }
