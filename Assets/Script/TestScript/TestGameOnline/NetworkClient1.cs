@@ -2,13 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using SocketIO;
-using Cinemachine;
-
-public class NetworkClient : SocketIOComponent
+public class NetworkClient1 : SocketIOComponent
 {
     // Start is called before the first frame update
     [SerializeField] Transform NetworkContainer;
-    private Dictionary<string, NetworkIdentity> serverObjects;
+    private Dictionary<string, NetworkIdentity1> serverObjects;
     public static string ClientID { get; private set; }
     public override void Start()
     {
@@ -19,7 +17,7 @@ public class NetworkClient : SocketIOComponent
     }
     private void initalise()
     {
-        serverObjects = new Dictionary<string, NetworkIdentity>();
+        serverObjects = new Dictionary<string, NetworkIdentity1>();
     }
     // Update is called once per frame
     public override void Update()
@@ -37,42 +35,22 @@ public class NetworkClient : SocketIOComponent
         {
             ClientID = E.data["id"].ToString();
         });
-        On("newplayer", (E) =>
+        On("spawn", (E) =>
            {
-               //  Quaternion a = new Quaternion(0, 0, 0, 0);
-
-               Debug.Log("vao ham spawn");
+               Debug.Log(E);
                string id = E.data["id"].ToString();
-               GameObject _newPlayer = Instantiate(Resources.Load("Player", typeof(GameObject)), new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
-
-
-
-
-               // CameraController.instance.CameraFLlowPlayer(PlayerCameraRoot);
-               //  CameraController.instance.VrCamShootFLlowPlayer(PlayerCameraRoot);
-               // _newPlayer.transform.SetParent(NetworkContainer);
+               GameObject _newPlayer = Instantiate(Resources.Load("Test/Player", typeof(GameObject)), new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
                _newPlayer.name = string.Format("Player({0})", id);
-               //_newPlayer.name = string.Format("Player");
-               //  GameController.instance.SetListEnemy(true);
-               NetworkIdentity ni = _newPlayer.GetComponent<NetworkIdentity>();
+               NetworkIdentity1 ni = _newPlayer.GetComponent<NetworkIdentity1>();
                ni.SetControllerID(id);
                ni.SetSocketReference(this);
                serverObjects.Add(id, ni);
-
-               if (ClientID == id)
-               {
-                   GameObject PlayerCameraRoot = _newPlayer.transform.GetChild(0).gameObject;
-                   CinemachineVirtualCamera _newCamera = Instantiate(Resources.Load("PlayerFollowCamera", typeof(CinemachineVirtualCamera)), new Vector3(0, 0, 0), Quaternion.identity) as CinemachineVirtualCamera;
-                   _newCamera.Follow = PlayerCameraRoot.transform;
-               }
 
            });
 
         On("disconnected", (E) =>
              {
                  string id = E.data["id"].ToString();
-                 ///Debug.Log(id);
-
                  GameObject go = serverObjects[id].gameObject;
                  Destroy(go);
                  serverObjects.Remove(id);
@@ -80,12 +58,11 @@ public class NetworkClient : SocketIOComponent
 
         On("updatePosition", (E) =>
         {
-
             string id = E.data["id"].ToString();
             float x = E.data["position"]["x"].f;
             float z = E.data["position"]["z"].f;
             Debug.Log(x);
-            NetworkIdentity ni = serverObjects[id];
+            NetworkIdentity1 ni = serverObjects[id];
             ni.transform.position = new Vector3(x, 0, z);
             Debug.Log(new Vector3(0, 0, 0));
 

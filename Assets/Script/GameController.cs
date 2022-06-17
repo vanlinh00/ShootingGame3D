@@ -11,6 +11,9 @@ public class GameController : MonoBehaviour
     [SerializeField]
     public List<GameObject> _listPoint;
 
+
+    [SerializeField]
+    public GameObject _listEnemy;
     private void Awake()
     {
         instance = this;
@@ -18,6 +21,10 @@ public class GameController : MonoBehaviour
     void Update()
     {
 
+    }
+    public void SetListEnemy(bool a)
+    {
+        _listEnemy.SetActive(a);
     }
     public void DeleteEnemyInList(int PosDelete)
     {

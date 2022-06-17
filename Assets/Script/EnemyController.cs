@@ -19,7 +19,7 @@ public class EnemyController : BasePlayerController
     Image _healthBar;
 
     int randomPosition = 0;
-
+    bool isPlayer = false;
     private void Awake()
     {
 
@@ -27,6 +27,7 @@ public class EnemyController : BasePlayerController
     private void Start()
     {
         randomPosition = Random.RandomRange(0, GameController.instance._listPoint.Count);
+        _moveToPlayer = GameObject.Find("Player").transform;
     }
     private void FixedUpdate()
     {

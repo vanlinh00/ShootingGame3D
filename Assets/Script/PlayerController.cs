@@ -6,8 +6,7 @@ public class PlayerController : BasePlayerController
 {
     [SerializeField]
     CharacterController _characterController;
-    [SerializeField]
-    Transform _camera;
+
     [SerializeField]
     float speed;
     float horizontalInput;
@@ -20,8 +19,6 @@ public class PlayerController : BasePlayerController
     Transform _posGun;
     Vector3 _shootPoint;
 
-    [SerializeField]
-    GameObject _testShoot;
 
 
     void Start()
@@ -30,7 +27,10 @@ public class PlayerController : BasePlayerController
     }
     private void Update()
     {
+
         MovePlayer();
+
+
 
     }
     void MovePlayer()

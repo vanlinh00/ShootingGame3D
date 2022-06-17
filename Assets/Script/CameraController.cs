@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,10 @@ public class CameraController : MonoBehaviour
 {
     public static CameraController instance;
     [SerializeField]
-    GameObject _vrCamShoot;
+    CinemachineVirtualCamera _vrCamShoot;
+
+    [SerializeField]
+    CinemachineVirtualCamera PlayerFollowCamera;
     void Start()
     {
         instance = this;
@@ -19,6 +23,14 @@ public class CameraController : MonoBehaviour
     }
     public void PlayerSniperCult(bool a)
     {
-        _vrCamShoot.SetActive(a);
+        _vrCamShoot.gameObject.SetActive(a);
+    }
+    public void CameraFLlowPlayer(GameObject target)
+    {
+        PlayerFollowCamera.Follow = target.transform;
+    }
+    public void VrCamShootFLlowPlayer(GameObject target)
+    {
+        _vrCamShoot.Follow = target.transform;
     }
 }

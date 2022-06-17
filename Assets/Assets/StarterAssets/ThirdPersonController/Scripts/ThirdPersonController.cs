@@ -12,8 +12,35 @@ namespace StarterAssets
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
     [RequireComponent(typeof(PlayerInput))]
 #endif
-    public class ThirdPersonController : MonoBehaviour
+    public class ThirdPersonController : BasePlayerController
     {
+        /// gap code
+
+        [SerializeField]
+        CharacterController _characterController;
+
+        [SerializeField]
+        float speed;
+        float horizontalInput;
+        float verticalInput;
+
+        float turnSoothTime = 0.1f;
+        float turnSoomthVelocity;
+
+        [SerializeField]
+        Transform _posGun;
+        Vector3 _shootPoint;
+
+
+        /// 
+
+
+
+
+
+        [SerializeField]
+        private NetworkIdentity networkIndentity;
+
         [Header("Player")]
         [Tooltip("Move speed of the character in m/s")]
         public float MoveSpeed = 2.0f;
@@ -158,7 +185,13 @@ namespace StarterAssets
 
             //  JumpAndGravity();
             //     GroundedCheck();
-            Move();
+
+            if (networkIndentity.IsControlling())
+            {
+                Move();
+                MovePlayer();
+            }
+
         }
 
         private void LateUpdate()
@@ -388,5 +421,65 @@ namespace StarterAssets
                 AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);
             }
         }
+
+        void MovePlayer()
+        {
+
+            horizontalInput = Input.GetAxis("Horizontal");
+            verticalInput = Input.GetAxis("Vertical");
+            Vector3 direction = new Vector3(horizontalInput, 0f, verticalInput).normalized;
+
+            Vector2 screenCenterPoint = new Vector2(Screen.width / 2f, Screen.height / 2f);
+            Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
+
+            if (Physics.Raycast(ray, out RaycastHit raycastHit))
+            {
+                _shootPoint = raycastHit.point;
+                transform.LookAt(_shootPoint);
+            }
+
+            if (Input.GetKeyDown("q"))
+            {
+                CameraController.instance.PlayerSniperCult(true);
+                UiController.instance.UiGun(false);
+                UiController.instance.UiSniperCult(true);
+            }
+            else if (Input.GetKeyUp("q"))
+            {
+                CameraController.instance.PlayerSniperCult(false);
+                UiController.instance.UiGun(true);
+                UiController.instance.UiSniperCult(false);
+                AnimationShootToIdle();
+            }
+            if (Input.GetMouseButtonDown(0))
+            {
+                Shooting();
+            }
+
+            if (direction.magnitude >= 0.1f)
+            {
+                AnimationIdleToRun();
+                //  float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + _camera.eulerAngles.y;
+                //  float angle = Mathf.SmoothDampAngle(transform.localEulerAngles.y, targetAngle, ref turnSoomthVelocity, turnSoothTime);
+
+                // transform.rotation = Quaternion.Euler(0f, angle, 0f);
+
+                // Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+                //   _characterController.Move(moveDir.normalized * speed * Time.deltaTime);
+            }
+            else
+            {
+                AnimationRunToIdle();
+
+            }
+
+        }
+        void Shooting()
+        {
+            GameObject _newBullet = Instantiate(Resources.Load("Bullet", typeof(GameObject)), _posGun.position, _posGun.rotation) as GameObject;
+            _newBullet.GetComponent<Bullet>()._firePoint = _shootPoint;
+            Destroy(_newBullet, 5);
+        }
+
     }
 }
