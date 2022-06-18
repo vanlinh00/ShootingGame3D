@@ -512,7 +512,7 @@ GameObject:
   - component: {fileID: 8472710115849064772}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Boss
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -599,6 +599,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 8472710115849064774}
+  _posGun: {fileID: 8472710116130963222}
   speed: 0.001
   _moveToPlayer: {fileID: 0}
   _characterController: {fileID: 8472710115849064775}

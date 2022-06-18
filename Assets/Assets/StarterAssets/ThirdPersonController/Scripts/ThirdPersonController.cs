@@ -27,17 +27,11 @@ namespace StarterAssets
         float turnSoothTime = 0.1f;
         float turnSoomthVelocity;
 
-        [SerializeField]
-        Transform _posGun;
+
         Vector3 _shootPoint;
 
 
         /// 
-
-
-
-
-
         [SerializeField]
         private NetworkIdentity networkIndentity;
 
@@ -453,7 +447,7 @@ namespace StarterAssets
             }
             if (Input.GetMouseButtonDown(0))
             {
-                Shooting();
+                Shooting(_shootPoint);
             }
 
             if (direction.magnitude >= 0.1f)
@@ -474,12 +468,19 @@ namespace StarterAssets
             }
 
         }
-        void Shooting()
+        public void OnCollisionEnter(Collision collision)
         {
-            GameObject _newBullet = Instantiate(Resources.Load("Bullet", typeof(GameObject)), _posGun.position, _posGun.rotation) as GameObject;
-            _newBullet.GetComponent<Bullet>()._firePoint = _shootPoint;
-            Destroy(_newBullet, 5);
+            Debug.Log("da cham vao player");
+            if (collision.gameObject.tag.Equals("Player"))
+            {
+                health -= 2000;
+                if (health <= 0)
+                {
+                    Debug.Log("End Game");
+                }
+            }
         }
+
 
     }
 }

@@ -7,6 +7,9 @@ using Cinemachine;
 //https://gameshooting3d.herokuapp.com/
 
 
+// dan ban trong player tat ca cai position co the di chuyen duoc co gan chuyen 
+// 
+
 public class NetworkClient : SocketIOComponent
 {
     // Start is called before the first frame update

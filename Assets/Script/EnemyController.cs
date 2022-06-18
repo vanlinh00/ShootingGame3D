@@ -20,6 +20,7 @@ public class EnemyController : BasePlayerController
 
     int randomPosition = 0;
     bool isPlayer = false;
+    float shootTime = 10f;
     private void Awake()
     {
 
@@ -33,9 +34,9 @@ public class EnemyController : BasePlayerController
     private void FixedUpdate()
     {
         float distance = Vector3.Distance(transform.position, _moveToPlayer.position);
-        if (distance < 30f)
+        if (distance < 40f)
         {
-            MoveToPlayer();
+            MoveToPlayer(distance);
         }
         else
         {
@@ -58,17 +59,30 @@ public class EnemyController : BasePlayerController
             AnimationIdleToRun();
         }
     }
-    void MoveToPlayer()
+    void MoveToPlayer(float distance)
     {
         transform.LookAt(_moveToPlayer.position);
-        AnimationIdleToRun();
-        transform.position = Vector3.Lerp(transform.position, _moveToPlayer.position, speed * Time.deltaTime);
+        if (distance > 20f)
+        {
+            AnimationIdleToRun();
+            //  transform.position = Vector3.Lerp(transform.position, _moveToPlayer.position, speed * Time.deltaTime);
+            transform.Translate((_moveToPlayer.position - transform.position) * speed);
+        }
+        else
+        {
+            AnimationRunToIdle();
+            shootTime -= Time.deltaTime;
+            if (shootTime < 0)
+            {
+                enemyShooting(_moveToPlayer.position);
+                shootTime = 10f;
+            }
 
+        }
     }
     IEnumerator ExampleCoroutine()
     {
-
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(20.0f);
     }
     public void muHealp(float n)
     {
@@ -79,5 +93,13 @@ public class EnemyController : BasePlayerController
         {
             Destroy(this.gameObject);
         }
+    }
+    public void enemyShooting(Vector3 positionPlayer)
+    {
+        Vector3 target = new Vector3();
+        target.x = positionPlayer.x;
+        target.y = positionPlayer.y + 2.0f;
+        target.z = positionPlayer.z;
+        Shooting(target);
     }
 }

@@ -85,6 +85,7 @@ public class PlayerController : BasePlayerController
         }
 
     }
+
     void Shooting()
     {
         GameObject _newBullet = Instantiate(Resources.Load("Bullet", typeof(GameObject)), _posGun.position, _posGun.rotation) as GameObject;

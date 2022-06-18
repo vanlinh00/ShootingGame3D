@@ -8,6 +8,15 @@ using UnityEngine;
 
 
 // lam ui dang nhap vao
+
+// lam ui cho thanh mau cho player || hien thi nguoi trong mapp | hiên thi ten nguoi loi trong game  online
+// lam chat giua 1 nguoi choi
+
+// lam tu do
+// lam animation muot hon
+
+// hien thi thang cuoc
+
 public class UiController : MonoBehaviour
 {
     public static UiController instance;

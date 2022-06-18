@@ -1787,6 +1787,7 @@ GameObject:
   - component: {fileID: 2413676729083289854}
   - component: {fileID: 7196732052240178636}
   - component: {fileID: 5233109071035039259}
+  - component: {fileID: 6570811571816052156}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -1862,9 +1863,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 1894971959484532376}
+  _posGun: {fileID: 2031977670220439838}
   _characterController: {fileID: 2413676729083289848}
   speed: 1.3
-  _posGun: {fileID: 2031977670220439838}
   networkIndentity: {fileID: 7196732052240178636}
   MoveSpeed: 4.31
   SprintSpeed: 5.335
@@ -2058,6 +2059,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9692b85ae9a74fa4497cd5562efef150, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &6570811571816052156
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2413676729083289842}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.5225685, z: 1}
+  m_Center: {x: 0, y: 1.8270463, z: 0}
 --- !u!1 &2519310610032383150
 GameObject:
   m_ObjectHideFlags: 0
