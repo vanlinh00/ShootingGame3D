@@ -44,9 +44,15 @@ public class NetworkTransform : MonoBehaviour
     }
     private void SendData()
     {
-        _player.x = Mathf.Round(transform.position.x * 1000.0f) / 1000.0f;
-        _player.z = Mathf.Round(transform.position.z * 1000.0f) / 1000.0f;
-        networkIdentity.GetSocket().Emit("updatePosition", new JSONObject(JsonUtility.ToJson(_player)));
+        _player.position.x = Mathf.Round(transform.position.x * 1000.0f) / 1000.0f;
+        _player.position.z = Mathf.Round(transform.position.z * 1000.0f) / 1000.0f;
+
+        //  _player.rotation.x = Mathf.Round(transform.rotation.x * 1000.0f) / 1000.0f;
+        //_player.rotation.y = Mathf.Round(transform.rotation.y * 1000.0f) / 1000.0f;
+
+        //  Debug.Log(_player.position.x);
+        networkIdentity.GetSocket().Emit("updatePosition", new JSONObject(JsonUtility.ToJson(_player.position)));
+        //  networkIdentity.GetSocket().Emit("updateRotation", new JSONObject(JsonUtility.ToJson(_player.rotation)));
     }
 
 }

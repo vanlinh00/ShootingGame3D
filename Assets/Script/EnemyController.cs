@@ -27,7 +27,8 @@ public class EnemyController : BasePlayerController
     private void Start()
     {
         randomPosition = Random.RandomRange(0, GameController.instance._listPoint.Count);
-        _moveToPlayer = GameObject.Find("Player").transform;
+        _moveToPlayer = GameObject.Find(NetworkClient.ClientID).transform;
+
     }
     private void FixedUpdate()
     {

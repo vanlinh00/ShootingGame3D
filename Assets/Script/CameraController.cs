@@ -6,11 +6,10 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     public static CameraController instance;
-    [SerializeField]
-    CinemachineVirtualCamera _vrCamShoot;
 
-    [SerializeField]
-    CinemachineVirtualCamera PlayerFollowCamera;
+    public CinemachineVirtualCamera _vrCamShoot;
+
+    public CinemachineVirtualCamera PlayerFollowCamera;
     void Start()
     {
         instance = this;
