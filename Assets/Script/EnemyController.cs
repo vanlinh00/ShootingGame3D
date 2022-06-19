@@ -6,6 +6,8 @@ using UnityEngine.UI;
 // cho boss ban minh khi lai gan
 // neu co the cho boss ban nhau
 // moi con boss radom 1 vi tri 
+// neu co the cho 2 enemy ban nhau
+// lam cho 2 con khong di lien vao nhau
 public class EnemyController : BasePlayerController
 {
     [SerializeField]
@@ -29,7 +31,6 @@ public class EnemyController : BasePlayerController
     {
         randomPosition = Random.RandomRange(0, GameController.instance._listPoint.Count);
         _moveToPlayer = GameObject.Find(NetworkClient.ClientID).transform;
-
     }
     private void FixedUpdate()
     {

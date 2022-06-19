@@ -19,8 +19,6 @@ public class PlayerController : BasePlayerController
     Transform _posGun;
     Vector3 _shootPoint;
 
-
-
     void Start()
     {
 
