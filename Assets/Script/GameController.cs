@@ -17,6 +17,8 @@ public class GameController : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        AudioController.instance.OnGame();
+        AudioController.instance.CountStartGame();
     }
     void Update()
     {

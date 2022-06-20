@@ -12,6 +12,7 @@ using UnityEngine;
 
 // lam ui  cho man hinh load game player
 
+// hien thi man hinh dem  5 s khi start game
 public class UiController : MonoBehaviour
 {
     public static UiController instance;
