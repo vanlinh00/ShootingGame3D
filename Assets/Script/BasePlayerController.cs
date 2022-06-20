@@ -56,13 +56,13 @@ public class BasePlayerController : MonoBehaviour
     // ideal nay da xoa
     protected void PlayerLookAt()
     {
-        int distancePlayerToPlayer = GameController.instance.FindPlayerNear(transform)[0];
-        int positionPlayer = GameController.instance.FindPlayerNear(transform)[1];
+        // int distancePlayerToPlayer = GameController.instance.FindPlayerNear(transform)[0];
+        // int positionPlayer = GameController.instance.FindPlayerNear(transform)[1];
 
-        if (distancePlayerToPlayer < 20)
-        {
-            transform.LookAt(GameController.instance._listPlayer[positionPlayer].transform.position);
-        }
+        // if (distancePlayerToPlayer < 20)
+        //  {
+        //      transform.LookAt(GameController.instance._listPlayer[positionPlayer].transform.position);
+        //  }
 
     }
     protected void Shooting(Vector3 _shootPoint)

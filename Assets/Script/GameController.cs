@@ -1,77 +1,119 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System.Linq;
 public class GameController : MonoBehaviour
 {
     public static GameController instance;
-    [SerializeField]
-    public List<GameObject> _listPlayer;
 
     [SerializeField]
     public List<GameObject> _listPoint;
 
-
     [SerializeField]
-    public GameObject _listEnemy;
+    GameObject _allPositionEnemy;
+
+    public List<int> _listDestinationEnemy = new List<int>();
+    public List<GameObject> _listEnemy = new List<GameObject>();
     private void Awake()
     {
         instance = this;
         AudioController.instance.OnGame();
         AudioController.instance.CountStartGame();
     }
+    public void Start()
+    {
+
+    }
     void Update()
     {
 
     }
+    public void bornAllEnemy()
+    {
+        for (int i = 0; i < _listPoint.Count; i++)
+        {
+            GameObject _newEnemy = Instantiate(Resources.Load("Enemy", typeof(GameObject)), new Vector3(-71.1f, 0, 0), Quaternion.identity) as GameObject;
+            _newEnemy.transform.parent = _allPositionEnemy.transform;
+            _listEnemy.Add(_newEnemy);
+            _newEnemy.GetComponent<EnemyController>().addRandomPosition(ranDomDestinationOfEnemy());
+        }
+    }
+    public int ranDomDestinationOfEnemy()
+    {
+        int RandomPosition = -1;
+        do
+        {
+            RandomPosition = Random.RandomRange(0, _listPoint.Count);
+
+        } while (_listDestinationEnemy.Contains(RandomPosition));
+
+        _listDestinationEnemy.Add(RandomPosition);
+        ClearlistDestinationEnemy();
+        return RandomPosition;
+    }
+    public void ClearlistDestinationEnemy()
+    {
+        if (_listDestinationEnemy.Count >= _listEnemy.Count)
+        {
+            _listDestinationEnemy.Clear();
+        }
+    }
+    public void RemoveGameObjectNull()
+    {
+        _listEnemy = _listEnemy.Where(item => item != null).ToList();
+    }
     public void SetListEnemy(bool a)
     {
-        _listEnemy.SetActive(a);
-    }
-    public void DeleteEnemyInList(int PosDelete)
-    {
-        _listPlayer.RemoveAt(PosDelete);
-    }
-    public bool CheckListPlayerEmty()
-    {
-        return _listPlayer.Count == 0 ? true : false;
-    }
-    public void EndGame()
-    {
-        Time.timeScale = 0;
+        _allPositionEnemy.SetActive(a); ;
+        bornAllEnemy();
     }
 
-    // return vi tri cua player gan nhat va vi tri cua no trong mang
-    public int[] FindPlayerNear(Transform transformPlayer)
+    public Dictionary<int, float> checkDistanceAllEnemy(Transform transformPlayer)
     {
+        Dictionary<int, float> DictDistanceAllEnemy = new Dictionary<int, float>();
 
-        int[] distanceAndPosition = new int[2];
-        float minDistance = 0;
-        for (int i = 0; i < _listPlayer.Count; i++)
+        for (int i = 0; i < _listEnemy.Count; i++)
         {
-            if (i == 0 && _listPlayer.Count >= 2)
+            float disTance2Player = Vector3.Distance(transformPlayer.position, _listEnemy[i].transform.position);
+            DictDistanceAllEnemy.Add(i, disTance2Player);
+        }
+        var sortedDict = from entry in DictDistanceAllEnemy orderby entry.Value ascending select entry;
+        DictDistanceAllEnemy = (Dictionary<int, float>)sortedDict;
+
+        foreach (var kvp in DictDistanceAllEnemy)
+        {
+            Debug.Log("key" + kvp.Key + "value" + kvp.Value);
+        }
+        //  Console.WriteLine("Key: {0}, Value: {1}", kvp.Key, kvp.Value);
+        return DictDistanceAllEnemy;
+    }
+    public int[,] checkMinMaxDistanceEnemy(Transform transformPlayer)
+    {
+        int[,] arrayDistanceAndPosition = new int[3, 2];
+        float minDistance = (Vector3.Distance(transformPlayer.position, _listEnemy[0].transform.position) == 0f) ? Vector3.Distance(transformPlayer.position, _listEnemy[0].transform.position) : Vector3.Distance(transformPlayer.position, _listEnemy[1].transform.position);
+        float maxDistance = Vector3.Distance(transformPlayer.position, _listEnemy[0].transform.position);
+        for (int i = 0; i < _listEnemy.Count; i++)
+        {
+            float disTance2Player = Vector3.Distance(transformPlayer.position, _listEnemy[i].transform.position);
+
+            if (minDistance > disTance2Player && disTance2Player != 0f)
             {
-                int PosPlayer = 0;
-                if (Vector3.Distance(transformPlayer.position, _listPlayer[0].transform.position) == 0)
-                {
-                    PosPlayer = 1;
-                }
-                minDistance = Vector3.Distance(transformPlayer.position, _listPlayer[PosPlayer].transform.position);
-                distanceAndPosition[0] = (int)Vector3.Distance(transformPlayer.position, _listPlayer[PosPlayer].transform.position);
-                distanceAndPosition[1] = PosPlayer;
+                minDistance = disTance2Player;
+                arrayDistanceAndPosition[0, 0] = i;
+                arrayDistanceAndPosition[0, 1] = (int)disTance2Player;
             }
-            else
+            if (maxDistance < disTance2Player)
             {
-                float disTance2Player = Vector3.Distance(transformPlayer.position, _listPlayer[i].transform.position);
-                if (minDistance > disTance2Player && disTance2Player != 0f)
-                {
-                    minDistance = disTance2Player;
-                    distanceAndPosition[0] = (int)Vector3.Distance(transformPlayer.position, _listPlayer[i].transform.position);
-                    distanceAndPosition[1] = i;
-                }
+                maxDistance = disTance2Player;
+                arrayDistanceAndPosition[1, 0] = i;
+                arrayDistanceAndPosition[1, 1] = (int)disTance2Player;
             }
 
         }
-        return distanceAndPosition;
+
+
+        return arrayDistanceAndPosition;
+
     }
+
 }
