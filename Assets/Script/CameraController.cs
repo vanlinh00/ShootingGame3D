@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class CameraController : MonoBehaviour
 {
     public static CameraController instance;
@@ -10,6 +11,10 @@ public class CameraController : MonoBehaviour
     public CinemachineVirtualCamera _vrCamShoot;
 
     public CinemachineVirtualCamera PlayerFollowCamera;
+    private void Awake()
+    {
+        Cursor.visible = false;
+    }
     void Start()
     {
         instance = this;

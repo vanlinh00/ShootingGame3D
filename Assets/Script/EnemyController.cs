@@ -35,7 +35,7 @@ public class EnemyController : BasePlayerController
     private void FixedUpdate()
     {
         float distance = Vector3.Distance(transform.position, _moveToPlayer.position);
-        if (distance < 40f)
+        if (distance < 60f)
         {
             MoveToPlayer(distance);
         }
@@ -52,31 +52,32 @@ public class EnemyController : BasePlayerController
 
         if ((Vector3.Distance(transform.position, GameController.instance._listPoint[randomPosition].transform.position)) < 10f)
         {
-            AnimationRunToIdle();
+            PlayerIdle();
             randomPosition = Random.RandomRange(0, GameController.instance._listPoint.Count);
         }
         else
         {
-            AnimationIdleToRun();
+            PlayerRun();
         }
     }
     void MoveToPlayer(float distance)
     {
         transform.LookAt(_moveToPlayer.position);
-        if (distance > 20f)
+        if (distance > 40f)
         {
-            AnimationIdleToRun();
+            PlayerRun();
             //  transform.position = Vector3.Lerp(transform.position, _moveToPlayer.position, speed * Time.deltaTime);
             transform.Translate((_moveToPlayer.position - transform.position) * speed);
         }
         else
         {
-            AnimationRunToIdle();
+            PlayerIdle();
             shootTime -= Time.deltaTime;
             if (shootTime < 0)
             {
+                Playershoot();
                 enemyShooting(_moveToPlayer.position);
-                shootTime = 10f;
+                shootTime = 8f;
             }
 
         }

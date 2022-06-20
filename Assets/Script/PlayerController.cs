@@ -58,7 +58,7 @@ public class PlayerController : BasePlayerController
             CameraController.instance.PlayerSniperCult(false);
             UiController.instance.UiGun(true);
             UiController.instance.UiSniperCult(false);
-            AnimationShootToIdle();
+            PlayerIdle();
         }
         if (Input.GetMouseButtonDown(0))
         {
@@ -67,7 +67,7 @@ public class PlayerController : BasePlayerController
 
         if (direction.magnitude >= 0.1f)
         {
-            AnimationIdleToRun();
+            PlayerRun();
             //  float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + _camera.eulerAngles.y;
             //  float angle = Mathf.SmoothDampAngle(transform.localEulerAngles.y, targetAngle, ref turnSoomthVelocity, turnSoothTime);
 
@@ -78,7 +78,7 @@ public class PlayerController : BasePlayerController
         }
         else
         {
-            AnimationRunToIdle();
+            PlayerIdle(); ;
 
         }
 
@@ -86,6 +86,7 @@ public class PlayerController : BasePlayerController
 
     void Shooting()
     {
+        Playershoot();
         GameObject _newBullet = Instantiate(Resources.Load("Bullet", typeof(GameObject)), _posGun.position, _posGun.rotation) as GameObject;
         _newBullet.GetComponent<Bullet>()._firePoint = _shootPoint;
         Destroy(_newBullet, 5);

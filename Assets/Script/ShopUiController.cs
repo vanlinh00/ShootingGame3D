@@ -11,10 +11,7 @@ public class ShopUiController : MonoBehaviour
     [SerializeField] Button _middleLeft;
     [SerializeField] Button _middleRight;
     [SerializeField] Button _playGame;
-    // 0     1         2
-    //   0    -1        -2
-    private string[] _textAnimation = { "run", "idle", "shoot" };
-    int check = 0;
+    int checkNextAnim = 0;
     private void Awake()
     {
         _playGame.onClick.AddListener(OnPlayGame);
@@ -23,13 +20,21 @@ public class ShopUiController : MonoBehaviour
     }
     void Start()
     {
-
+        _middleLeft.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (checkNextAnim != 0)
+        {
+            _middleLeft.gameObject.SetActive(true);
+        }
+        else
+        {
+            _middleLeft.gameObject.SetActive(false);
 
+        }
     }
     void OnPlayGame()
     {
@@ -37,28 +42,21 @@ public class ShopUiController : MonoBehaviour
     }
     void NextAnimationl()
     {
-        if (check != 0)
+        if (checkNextAnim != 0)
         {
-            check--;
-            Debug.Log(_textAnimation[check]);
-
+            checkNextAnim--;
         }
-
+        UiPlayerController.instance.AnimatorPlayer(checkNextAnim);
     }
     void NextAnimationr()
     {
-        if (check != _textAnimation.Length)
+        checkNextAnim++;
+        if (checkNextAnim == 3)
         {
-            check++;
-            Debug.Log(_textAnimation[check]);
+            checkNextAnim = 0;
         }
-        else
-        {
-            check = 0;
-            Debug.Log(_textAnimation[check]);
-
-        }
-
+        UiPlayerController.instance.AnimatorPlayer(checkNextAnim);
     }
+
 
 }

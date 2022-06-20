@@ -443,7 +443,7 @@ namespace StarterAssets
                 CameraController.instance.PlayerSniperCult(false);
                 UiController.instance.UiGun(true);
                 UiController.instance.UiSniperCult(false);
-                AnimationShootToIdle();
+                PlayerIdle();
             }
             if (Input.GetMouseButtonDown(0))
             {
@@ -452,7 +452,7 @@ namespace StarterAssets
 
             if (direction.magnitude >= 0.1f)
             {
-                AnimationIdleToRun();
+                PlayerRun();
                 //  float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + _camera.eulerAngles.y;
                 //  float angle = Mathf.SmoothDampAngle(transform.localEulerAngles.y, targetAngle, ref turnSoomthVelocity, turnSoothTime);
 
@@ -463,7 +463,7 @@ namespace StarterAssets
             }
             else
             {
-                AnimationRunToIdle();
+                PlayerIdle();
 
             }
 

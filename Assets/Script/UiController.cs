@@ -10,6 +10,8 @@ using UnityEngine;
 // lam animation muot hon
 // hien thi thang cuoc
 
+// lam ui  cho man hinh load game player
+
 public class UiController : MonoBehaviour
 {
     public static UiController instance;

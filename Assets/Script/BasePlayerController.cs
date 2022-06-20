@@ -11,31 +11,45 @@ public class BasePlayerController : MonoBehaviour
 
     protected int health = 10000;
 
-
     void Update()
     {
 
     }
-    protected void AnimationIdleToRun()
-    {
-        _animator.SetBool("idle", false);
-        _animator.SetBool("run", true);
-    }
-    protected void AnimationRunToIdle()
-    {
-        _animator.SetBool("idle", true);
-        _animator.SetBool("run", false);
-    }
-    protected void AnimationIdleToShoot()
-    {
-
-        _animator.SetBool("idle", false);
-        _animator.SetBool("shoot", true);
-    }
-    protected void AnimationShootToIdle()
+    public void PlayerRun()
     {
         _animator.SetBool("shoot", false);
-        _animator.SetBool("idle", true);
+        _animator.SetBool("run", true);
+
+    }
+    public void Playershoot()
+    {
+        _animator.SetBool("shoot", true);
+    }
+    public void PlayerIdle()
+    {
+        _animator.SetBool("shoot", false);
+        _animator.SetBool("run", false);
+    }
+
+    public void AnimatorPlayer(int a)
+    {
+        switch (a)
+        {
+            case 0:
+                Debug.Log("idle");
+                PlayerIdle();
+                break;
+            case 1:
+                Debug.Log("run");
+                PlayerRun();
+                break;
+            case 2:
+                Debug.Log("shoot");
+                Playershoot();
+                break;
+            default:
+                break;
+        }
 
     }
 
