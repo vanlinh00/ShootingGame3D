@@ -32,7 +32,8 @@ public class GameController : MonoBehaviour
     {
         for (int i = 0; i < _listPoint.Count; i++)
         {
-            GameObject _newEnemy = Instantiate(Resources.Load("Enemy", typeof(GameObject)), new Vector3(-71.1f, 0, 0), Quaternion.identity) as GameObject;
+            GameObject _newEnemy = Instantiate(Resources.Load("Enemy", typeof(GameObject)), _listPoint[i].transform.position /*new Vector3(-71.1f, 0, 0)*/, Quaternion.identity) as GameObject;
+
             _newEnemy.transform.parent = _allPositionEnemy.transform;
             _listEnemy.Add(_newEnemy);
             _newEnemy.GetComponent<EnemyController>().addRandomPosition(ranDomDestinationOfEnemy());
@@ -95,7 +96,7 @@ public class GameController : MonoBehaviour
         for (int i = 0; i < _listEnemy.Count; i++)
         {
             float disTance2Player = Vector3.Distance(transformPlayer.position, _listEnemy[i].transform.position);
-
+            //  Debug.Log("distance 2 player " + disTance2Player);
             if (minDistance > disTance2Player && disTance2Player != 0f)
             {
                 minDistance = disTance2Player;
@@ -108,12 +109,8 @@ public class GameController : MonoBehaviour
                 arrayDistanceAndPosition[1, 0] = i;
                 arrayDistanceAndPosition[1, 1] = (int)disTance2Player;
             }
-
         }
-
-
         return arrayDistanceAndPosition;
-
     }
 
 }

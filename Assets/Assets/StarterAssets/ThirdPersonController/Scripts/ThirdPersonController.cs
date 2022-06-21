@@ -447,8 +447,8 @@ namespace StarterAssets
             }
             if (Input.GetMouseButtonDown(0))
             {
+                // Playershoot();
                 AudioController.instance.AkFire();
-                Playershoot();
                 Shooting(_shootPoint);
             }
 

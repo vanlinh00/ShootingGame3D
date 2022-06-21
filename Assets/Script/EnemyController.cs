@@ -4,12 +4,13 @@ using UnityEngine.AI;
 using UnityEngine.UI;
 using System.Linq;
 using System.Collections.Generic;
-// khi co dan bat vao no thi no phai chay ra cho khac
-// cho boss ban minh khi lai gan
+using DG.Tweening;
+// khi co dan bat vao no thi no phai chay ra cho khau
+
 // neu co the cho boss ban nhau
-// moi con boss radom 1 vi tri 
 // neu co the cho 2 enemy ban nhau
-// lam cho 2 con khong di lien vao nhau
+
+
 public class EnemyController : BasePlayerController
 {
     [SerializeField]
@@ -24,8 +25,6 @@ public class EnemyController : BasePlayerController
 
     private int randomPosition;
     float shootTime = 10f;
-    float moveTime = 4f;
-    float moveTimePlayer = 5f;
     private void Awake()
     {
 
@@ -38,48 +37,31 @@ public class EnemyController : BasePlayerController
     {
         if (transform != null)
         {
-            float distance = Vector3.Distance(transform.position, _moveToPlayer.position);
+            float distanceEandPlayer = Vector3.Distance(transform.position, _moveToPlayer.position);
+            float distanceEtoDestation = Vector3.Distance(transform.position, GameController.instance._listPoint[randomPosition].transform.position);
 
-            if (distance < 45f)
+            if (distanceEandPlayer < 55f && (distanceEtoDestation > 2 * distanceEandPlayer || distanceEandPlayer < 40f))
             {
-                int minDistanceBetween2Enemy = GameController.instance.checkMinMaxDistanceEnemy(this.transform)[0, 1];
-
-                if (minDistanceBetween2Enemy < 6)
-                {
-                    moveTime -= Time.deltaTime;
-                    if (moveTime < 0)
-                    {
-                        int pos = GameController.instance.checkMinMaxDistanceEnemy(this.transform)[1, 0];
-                        MoveToPoint(GameController.instance._listEnemy[pos].gameObject.transform.position);
-                        moveTime = 4f;
-                    }
-                    else
-                    {
-                        PlayerIdle();
-                    }
-                }
-                else
-                {
-                    moveTimePlayer -= Time.deltaTime;
-                    if (moveTime < 0)
-                    {
-                        MoveToPlayer(distance);
-                        moveTimePlayer = 4f;
-                    }
-                    else
-                    {
-                        PlayerIdle(); ;
-                    }
-                }
+                MoveToPlayer(distanceEandPlayer);
             }
             else
             {
+                // dung de cho 2 nemy shooting
+                //int minDistanceBetween2Enemy = GameController.instance.checkMinMaxDistanceEnemy(this.transform)[0, 1];
+
+                //if (minDistanceBetween2Enemy < 5)
+                //{
+                //    int pos = GameController.instance.checkMinMaxDistanceEnemy(this.transform)[0, 0];
+                //    // enemyShooting(GameController.instance._listEnemy[pos].gameObject.transform.position);
+
+                //}
+                //else
+                //{
+
+                //}
                 MoveToPoint((GameController.instance._listPoint[randomPosition].transform.position));
             }
-
         }
-
-
     }
     public void addRandomPosition(int a)
     {
@@ -92,9 +74,9 @@ public class EnemyController : BasePlayerController
 
         if ((Vector3.Distance(transform.position, target)) < 10f)
         {
-            PlayerIdle();
             GameController.instance.RemoveGameObjectNull();
             randomPosition = GameController.instance.ranDomDestinationOfEnemy();
+            // PlayerIdle();
         }
         else
         {
@@ -104,7 +86,7 @@ public class EnemyController : BasePlayerController
     void MoveToPlayer(float distance)
     {
         transform.LookAt(_moveToPlayer.position);
-        if (distance > 20f)
+        if (distance > 30f)
         {
             PlayerRun();
             //  transform.position = Vector3.Lerp(transform.position, _moveToPlayer.position, speed * Time.deltaTime);
@@ -112,7 +94,7 @@ public class EnemyController : BasePlayerController
         }
         else
         {
-            PlayerIdle();
+            // PlayerIdle();
             shootTime -= Time.deltaTime;
             if (shootTime < 0)
             {
@@ -131,7 +113,6 @@ public class EnemyController : BasePlayerController
     {
         _healthBar.GetComponent<Image>().fillAmount -= n;
         base.health -= 1000;
-
         if (base.health == 0)
         {
             Destroy(this.gameObject);
@@ -149,9 +130,18 @@ public class EnemyController : BasePlayerController
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag.Equals("Player"))
+        if (collision.gameObject.tag.Equals("Bullet"))
         {
-
+            EnemyMove();
         }
     }
+    private void EnemyMove()
+    {
+        float x = Random.RandomRange(-3, 3);
+        float z = Random.RandomRange(-3, 3);
+        Vector3 newPosition = new Vector3(transform.position.x + x, transform.position.y, transform.position.z + z);
+        PlayerRun();
+        transform.DOMove(newPosition, 0.5f);
+    }
+
 }
