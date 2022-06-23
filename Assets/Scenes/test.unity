@@ -944,9 +944,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 394961402}
   _posGun: {fileID: 1994702805}
-  _characterController: {fileID: 394961400}
-  speed: 3.21
-  _posGun: {fileID: 1994702805}
+  _healthBar: {fileID: 0}
 --- !u!143 &394961400
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1022,10 +1020,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 510431170}
   _posGun: {fileID: 0}
+  _healthBar: {fileID: 0}
   speed: 1.65
   _moveToPlayer: {fileID: 0}
   _characterController: {fileID: 0}
-  _healthBar: {fileID: 0}
 --- !u!95 &510431170
 Animator:
   serializedVersion: 3
@@ -3947,10 +3945,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 1557288785}
   _posGun: {fileID: 0}
+  _healthBar: {fileID: 0}
   speed: 1.65
   _moveToPlayer: {fileID: 0}
   _characterController: {fileID: 0}
-  _healthBar: {fileID: 0}
 --- !u!95 &1557288785
 Animator:
   serializedVersion: 3
@@ -4477,10 +4475,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 1821863258}
   _posGun: {fileID: 0}
+  _healthBar: {fileID: 0}
   speed: 1.65
   _moveToPlayer: {fileID: 0}
   _characterController: {fileID: 0}
-  _healthBar: {fileID: 0}
 --- !u!95 &1821863258
 Animator:
   serializedVersion: 3
@@ -5101,71 +5099,6 @@ Transform:
   m_Father: {fileID: 1415828262}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -27.881166, y: 176.4414, z: -30.238737}
---- !u!1001 &2076964002
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1309486516299566, guid: 227ee07e9e5b7914ba8fbb8f430be9a5, type: 3}
-      propertyPath: m_Name
-      value: Ghoul
-      objectReference: {fileID: 0}
-    - target: {fileID: 4467757482891228, guid: 227ee07e9e5b7914ba8fbb8f430be9a5, type: 3}
-      propertyPath: m_RootOrder
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 4467757482891228, guid: 227ee07e9e5b7914ba8fbb8f430be9a5, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4467757482891228, guid: 227ee07e9e5b7914ba8fbb8f430be9a5, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4467757482891228, guid: 227ee07e9e5b7914ba8fbb8f430be9a5, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4467757482891228, guid: 227ee07e9e5b7914ba8fbb8f430be9a5, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4467757482891228, guid: 227ee07e9e5b7914ba8fbb8f430be9a5, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4467757482891228, guid: 227ee07e9e5b7914ba8fbb8f430be9a5, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4467757482891228, guid: 227ee07e9e5b7914ba8fbb8f430be9a5, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4467757482891228, guid: 227ee07e9e5b7914ba8fbb8f430be9a5, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4467757482891228, guid: 227ee07e9e5b7914ba8fbb8f430be9a5, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4467757482891228, guid: 227ee07e9e5b7914ba8fbb8f430be9a5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4467757482891228, guid: 227ee07e9e5b7914ba8fbb8f430be9a5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
-      objectReference: {fileID: 0}
-    - target: {fileID: 4467757482891228, guid: 227ee07e9e5b7914ba8fbb8f430be9a5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 227ee07e9e5b7914ba8fbb8f430be9a5, type: 3}
 --- !u!1 &2079932306
 GameObject:
   m_ObjectHideFlags: 0

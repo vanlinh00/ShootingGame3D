@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 #endif
 
 /* Note: animations are called via the controller for both the character and capsule using animator null checks
  */
-
+// anh am khanh khi player bi ban
 namespace StarterAssets
 {
     [RequireComponent(typeof(CharacterController))]
@@ -448,7 +449,7 @@ namespace StarterAssets
             if (Input.GetMouseButtonDown(0))
             {
                 // Playershoot();
-                AudioController.instance.AkFire();
+                // AudioController.instance.AkFire();
                 Shooting(_shootPoint);
             }
 
@@ -470,19 +471,27 @@ namespace StarterAssets
             }
 
         }
-        public void OnCollisionEnter(Collision collision)
+        //public void OnCollisionEnter(Collision collision)
+        //{
+        //    // Debug.Log("da cham vao player");
+        //    if (collision.gameObject.tag.Equals("Player"))
+        //    {
+
+        //        // this.muHealp(0.01f);
+        //    }
+        //}
+        public override void muHealp(float n)
         {
-            Debug.Log("da cham vao player");
-            if (collision.gameObject.tag.Equals("Player"))
+            _healthBar.GetComponent<Image>().fillAmount -= n;
+            health -= 100;
+            if (health <= 0)
             {
-                health -= 2000;
-                if (health <= 0)
-                {
-                    Debug.Log("End Game");
-                }
+                UiController.instance.setCavaEndGame(true);
+                UiController.instance.EndGame("YOU LOSE");
+                //  Debug.Log("Player die ");
+
             }
         }
-
 
     }
 }
