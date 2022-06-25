@@ -42,6 +42,7 @@ public class EnemyController : BasePlayerController
         }
         else
         {
+            /*
             int minDistanceBetween2Enemy = GameController.instance.CheckMinMaxDistanceEnemy(this.transform)[0, 1];
             //  Debug.Log("palyer" + GameController.instance.CheckMinMaxDistanceEnemy(this.transform)[0, 1]);
             if (minDistanceBetween2Enemy < 39f)
@@ -59,9 +60,8 @@ public class EnemyController : BasePlayerController
             {
                 MoveToPoint((GameController.instance._listPoint[randomPosition].transform.position));
             }
-
-            //   MoveToPoint((GameController.instance._listPoint[randomPosition].transform.position));
-
+            */
+            MoveToPoint((GameController.instance._listPoint[randomPosition].transform.position));
         }
     }
     public void addRandomPosition(int a)

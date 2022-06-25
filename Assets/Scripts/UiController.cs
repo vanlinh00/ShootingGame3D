@@ -14,7 +14,6 @@ using UnityEngine.UI;
 
 // lam ui  cho man hinh load game player
 
-// hien thi man hinh dem  5 s khi start game
 public class UiController : MonoBehaviour
 {
     public static UiController instance;
@@ -33,8 +32,7 @@ public class UiController : MonoBehaviour
     [SerializeField] Button _btEndgame;
 
     float coutTime = 4f;
-    [SerializeField]
-    GameObject myPlayer;
+    [SerializeField] GameObject _Player;
 
 
     public NetworkIdentity networkIdentity;
