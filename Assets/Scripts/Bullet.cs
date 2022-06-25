@@ -20,7 +20,6 @@ public class Bullet : MonoBehaviour
     }
     private void Update()
     {
-        GameController.instance.RemoveGameObjectNull();
         transform.position = Vector3.Lerp(transform.position, _firePoint, 2f * Time.timeScale);
     }
     private void OnCollisionEnter(Collision collision)

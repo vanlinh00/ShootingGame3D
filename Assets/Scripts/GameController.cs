@@ -9,8 +9,7 @@ public class GameController : MonoBehaviour
     [SerializeField]
     public List<GameObject> _listPoint;
 
-    [SerializeField]
-    GameObject _allPositionEnemy;
+    [SerializeField] GameObject _allPositionEnemy;
 
     public List<int> _listDestinationEnemy = new List<int>();
     public List<GameObject> _listEnemy = new List<GameObject>();
@@ -18,6 +17,7 @@ public class GameController : MonoBehaviour
     public bool _isCreateAllEnemy = false;
     private void Awake()
     {
+        SetListEnemy(true);
         Cursor.visible = false;
         instance = this;
         AudioController.instance.OnGame();

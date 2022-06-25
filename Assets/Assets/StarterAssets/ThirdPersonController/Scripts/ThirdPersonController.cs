@@ -181,11 +181,16 @@ namespace StarterAssets
             //  JumpAndGravity();
             //     GroundedCheck();
 
-            if (networkIndentity.IsControlling())
-            {
-                Move();
-                MovePlayer();
-            }
+            // for Game Online
+            //if (networkIndentity.IsControlling())
+            //{
+            //    Move();
+            //    MovePlayer();
+            //}
+
+            // for game offline
+            Move();
+            MovePlayer();
 
         }
 
@@ -471,15 +476,6 @@ namespace StarterAssets
             }
 
         }
-        //public void OnCollisionEnter(Collision collision)
-        //{
-        //    // Debug.Log("da cham vao player");
-        //    if (collision.gameObject.tag.Equals("Player"))
-        //    {
-
-        //        // this.muHealp(0.01f);
-        //    }
-        //}
         public override void muHealp(float n)
         {
             _healthBar.GetComponent<Image>().fillAmount -= n;
@@ -488,8 +484,6 @@ namespace StarterAssets
             {
                 UiController.instance.setCavaEndGame(true);
                 UiController.instance.EndGame("YOU LOSE");
-                //  Debug.Log("Player die ");
-
             }
         }
 

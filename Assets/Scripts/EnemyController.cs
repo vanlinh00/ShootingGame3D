@@ -5,21 +5,18 @@ using UnityEngine.UI;
 using System.Linq;
 using System.Collections.Generic;
 using DG.Tweening;
-// khi co dan bat vao no thi no phai chay ra cho khau
 
+// khi co dan bat vao no thi no phai chay ra cho khau
 // neu co the cho boss ban nhau
 // neu co the cho 2 enemy ban nhau
 
-
 public class EnemyController : BasePlayerController
 {
-    [SerializeField]
-    float speed;
-    [SerializeField]
-    Transform _moveToPlayer;
+    [SerializeField] float speed;
 
-    [SerializeField]
-    CharacterController _characterController;
+    [SerializeField] Transform _moveToPlayer;
+
+    [SerializeField] CharacterController _characterController;
 
     private int randomPosition;
     float shootTime = 3f;
@@ -29,7 +26,8 @@ public class EnemyController : BasePlayerController
     }
     private void Start()
     {
-        _moveToPlayer = GameObject.Find(NetworkClient.ClientID).transform;
+        ///_moveToPlayer = GameObject.Find(NetworkClient.ClientID).transform; // for GameOnline
+        _moveToPlayer = GameObject.Find("Player").transform;
     }
     private void FixedUpdate()
     {
@@ -42,7 +40,7 @@ public class EnemyController : BasePlayerController
         }
         else
         {
-            /*
+            /* 2 enemy shooting
             int minDistanceBetween2Enemy = GameController.instance.CheckMinMaxDistanceEnemy(this.transform)[0, 1];
             //  Debug.Log("palyer" + GameController.instance.CheckMinMaxDistanceEnemy(this.transform)[0, 1]);
             if (minDistanceBetween2Enemy < 39f)
@@ -99,10 +97,6 @@ public class EnemyController : BasePlayerController
                 EnemyShooting(_moveToPlayer.position);
                 shootTime = 3f;
             }
-            // else
-            //{
-            //    PlayerIdle();
-            //}
         }
     }
     public void EnemyShooting(Vector3 positionPlayer)
