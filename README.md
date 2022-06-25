@@ -1,6 +1,6 @@
 # ShootingGame3D
 Bonjour à tout. c'est vanlinh. Aujourdh'ui je vais vous presenter un project ce que j'ai fait pendant 15 jour.                                                
-si vous voulez install mon project pour fait qq'ch.
+si vous voulez install mon project pour faire qq'ch.
 
 step 1: clone mon project sur mon github.
 
