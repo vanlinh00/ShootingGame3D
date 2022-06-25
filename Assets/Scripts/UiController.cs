@@ -106,22 +106,12 @@ public class UiController : MonoBehaviour
     public void CountTimeStartGame()
     {
         coutTime -= Time.deltaTime;
-        if (coutTime > 3f && coutTime <= 3.1f)
+        for (int i = 3; i > -1; i--)
         {
-            _countText.text = "3";
-        }
-        if (coutTime > 2f && coutTime <= 2.1f)
-        {
-            _countText.text = "2";
-        }
-        if (coutTime > 1f && coutTime <= 1.1f)
-        {
-            _countText.text = "1";
-        }
-        if (coutTime > 0f && coutTime <= 0.1f)
-        {
-            _countText.text = "0";
-
+            if (coutTime > i && coutTime <= i + 0.1f)
+            {
+                _countText.text = "" + i;
+            }
         }
         if (coutTime > -1f && coutTime <= -0.9f)
         {
