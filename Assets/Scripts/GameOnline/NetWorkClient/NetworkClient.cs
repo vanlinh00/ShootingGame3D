@@ -63,7 +63,7 @@ public class NetworkClient : SocketIOComponent
                    UiController.instance.networkIdentity = ni;
                    GameController.instance.SetListEnemy(true);
                    // camera for player
-                   _newPlayer.GetComponent<ThirdPersonController>()._healthBar = UiController.instance._healthBar;
+                   //_newPlayer.GetComponent<ThirdPersonController>()._healthBar = UiController.instance._healthBar;
 
                    GameObject PlayerCameraRoot = _newPlayer.transform.GetChild(0).gameObject;
                    CinemachineVirtualCamera _newCamera = Instantiate(Resources.Load("PlayerFollowCamera", typeof(CinemachineVirtualCamera)), new Vector3(0, 0, 0), Quaternion.identity) as CinemachineVirtualCamera;

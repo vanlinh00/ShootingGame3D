@@ -69,7 +69,7 @@ public class BasePlayerController : MonoBehaviour
         if (health == 0)
         {
             Destroy(this.gameObject);
-            UiController.instance.countEnemy();
+            UiMainCavasGP.instance.countEnemy();
             GameController.instance.RemoveGameObjectNull();
 
         }

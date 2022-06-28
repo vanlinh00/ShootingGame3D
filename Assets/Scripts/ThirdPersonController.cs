@@ -440,23 +440,23 @@ namespace StarterAssets
 
             if (Input.GetKeyDown("q"))
             {
-                CameraController.instance.PlayerSniperCult(true);
-                UiController.instance.UiGun(false);
-                UiController.instance.UiSniperCult(true);
+                UiScopeGP.instance.UiSniperCultSetActive();
             }
             else if (Input.GetKeyUp("q"))
             {
-                CameraController.instance.PlayerSniperCult(false);
-                UiController.instance.UiGun(true);
-                UiController.instance.UiSniperCult(false);
+                UiScopeGP.instance.UiGunSetActive();
                 PlayerIdle();
             }
             if (Input.GetMouseButtonDown(0))
             {
-                // Playershoot();
-                // AudioController.instance.AkFire();
+                UiScopeGP.instance.setAniGunShooting(true);
                 Shooting(_shootPoint);
             }
+            else if (Input.GetMouseButtonUp(0))
+            {
+                UiScopeGP.instance.setAniGunShooting(false);
+            }
+
 
             if (direction.magnitude >= 0.1f)
             {
@@ -483,7 +483,7 @@ namespace StarterAssets
             if (health <= 0)
             {
                 UiController.instance.setCavaEndGame(true);
-                UiController.instance.EndGame("YOU LOSE");
+                UiEndGameGP.instance.EndGame("YOU LOSE");
             }
         }
 

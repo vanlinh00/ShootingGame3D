@@ -49,7 +49,6 @@ public class EnemyController : BasePlayerController
                 shootTime -= Time.deltaTime;
                 if (shootTime < 0)
                 {
-                    Debug.Log("dang bat enemy");
                     EnemyShooting(GameController.instance._listEnemy[pos].gameObject.transform.position);
                     shootTime = 7f;
                 }
@@ -59,6 +58,7 @@ public class EnemyController : BasePlayerController
                 MoveToPoint((GameController.instance._listPoint[randomPosition].transform.position));
             }
             */
+
             MoveToPoint((GameController.instance._listPoint[randomPosition].transform.position));
         }
     }
