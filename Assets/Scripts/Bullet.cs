@@ -8,7 +8,7 @@ using UnityEngine;
 // khi boss tren con lai cai hom do
 // ra nhat co vu khi
 // co tu do
-// M4  b?t ??u 1 phát ?i luôn
+// M4  ban vao dau 1 phat di luong
 public class Bullet : MonoBehaviour
 {
     public Vector3 _firePoint { get; set; }
@@ -41,7 +41,7 @@ public class Bullet : MonoBehaviour
         }
         else
         {
-            Destroy(this.gameObject, 1f);
+            Destroy(this.gameObject, 0.5f);
         }
     }
 }

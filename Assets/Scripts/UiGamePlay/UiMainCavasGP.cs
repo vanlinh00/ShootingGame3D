@@ -26,18 +26,21 @@ public class UiMainCavasGP : MonoBehaviour
         {
             CountTimeStartGame();
         }
-        countEnemy();
     }
     public void countEnemy()
     {
-        _countEnemy.text = GameController.instance._listEnemy.Count + "/19";
         if (GameController.instance._isCreateAllEnemy == true)
         {
-            if (GameController.instance._listEnemy.Count <= 0)
+            GameObject _allEnemy = GameObject.Find("AllEnemy");
+            int countE = _allEnemy.transform.childCount;
+            _countEnemy.text = countE + "/18";
+
+            if (countE <= 0)
             {
-                UiController.instance.EndGame();
+                UiController.instance.EndGame("YOU WIN");
             }
         }
+
     }
     public void CountTimeStartGame()
     {

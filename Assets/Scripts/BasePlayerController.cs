@@ -64,13 +64,12 @@ public class BasePlayerController : MonoBehaviour
     }
     public virtual void muHealp(float n)
     {
+        UiMainCavasGP.instance.countEnemy();
         _healthBar.GetComponent<Image>().fillAmount -= n;
         health -= 1000;
-        if (health == 0)
+        if (health <= 0)
         {
             Destroy(this.gameObject);
-            UiMainCavasGP.instance.countEnemy();
-            GameController.instance.RemoveGameObjectNull();
 
         }
     }

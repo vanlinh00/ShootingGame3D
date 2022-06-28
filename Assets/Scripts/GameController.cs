@@ -15,11 +15,13 @@ public class GameController : MonoBehaviour
     public List<GameObject> _listEnemy = new List<GameObject>();
 
     public bool _isCreateAllEnemy = false;
+
     private void Awake()
     {
         SetListEnemy(true);
         Cursor.visible = false;
         instance = this;
+
         AudioController.instance.OnGame();
         AudioController.instance.CountStartGame();
     }
@@ -73,27 +75,28 @@ public class GameController : MonoBehaviour
         BornAllEnemy();
     }
 
-    public Dictionary<int, float> CheckDistanceAllEnemy(Transform transformPlayer)
-    {
-        Dictionary<int, float> DictDistanceAllEnemy = new Dictionary<int, float>();
+    //public Dictionary<int, float> CheckDistanceAllEnemy(Transform transformPlayer)
+    //{
+    //    Dictionary<int, float> DictDistanceAllEnemy = new Dictionary<int, float>();
 
-        for (int i = 0; i < _listEnemy.Count; i++)
-        {
-            float disTance2Player = Vector3.Distance(transformPlayer.position, _listEnemy[i].transform.position);
-            DictDistanceAllEnemy.Add(i, disTance2Player);
-        }
-        var sortedDict = from entry in DictDistanceAllEnemy orderby entry.Value ascending select entry;
-        DictDistanceAllEnemy = (Dictionary<int, float>)sortedDict;
+    //    for (int i = 0; i < _listEnemy.Count; i++)
+    //    {
+    //        float disTance2Player = Vector3.Distance(transformPlayer.position, _listEnemy[i].transform.position);
+    //        DictDistanceAllEnemy.Add(i, disTance2Player);
+    //    }
+    //    var sortedDict = from entry in DictDistanceAllEnemy orderby entry.Value ascending select entry;
+    //    DictDistanceAllEnemy = (Dictionary<int, float>)sortedDict;
 
-        foreach (var kvp in DictDistanceAllEnemy)
-        {
-            Debug.Log("key" + kvp.Key + "value" + kvp.Value);
-        }
-        //  Console.WriteLine("Key: {0}, Value: {1}", kvp.Key, kvp.Value);
-        return DictDistanceAllEnemy;
-    }
+    //    foreach (var kvp in DictDistanceAllEnemy)
+    //    {
+    //        Debug.Log("key" + kvp.Key + "value" + kvp.Value);
+    //    }
+    //    //  Console.WriteLine("Key: {0}, Value: {1}", kvp.Key, kvp.Value);
+    //    return DictDistanceAllEnemy;
+    //}
     public int[,] CheckMinMaxDistanceEnemy(Transform transformPlayer)
     {
+        RemoveGameObjectNull();
         int[,] arrayDistanceAndPosition = new int[3, 2];
         float minDistance = (Vector3.Distance(transformPlayer.position, _listEnemy[0].transform.position) == 0f) ? Vector3.Distance(transformPlayer.position, _listEnemy[0].transform.position) : Vector3.Distance(transformPlayer.position, _listEnemy[1].transform.position);
         float maxDistance = Vector3.Distance(transformPlayer.position, _listEnemy[0].transform.position);

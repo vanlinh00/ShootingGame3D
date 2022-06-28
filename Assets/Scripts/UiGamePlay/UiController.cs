@@ -34,15 +34,12 @@ public class UiController : MonoBehaviour
         _cavaAndGame.SetActive(false);
 
     }
-    public void setCavaEndGame(bool result)
-    {
-        _cavaAndGame.SetActive(result);
-    }
 
-    public void EndGame()
+
+    public void EndGame(string result)
     {
-        setCavaEndGame(true);
-        UiEndGameGP.instance.EndGame("YOU WIN");
+        _cavaAndGame.SetActive(true);
+        UiEndGameGP.instance.EndGame(result);
     }
     void Update()
     {

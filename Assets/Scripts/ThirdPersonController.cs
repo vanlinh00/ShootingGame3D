@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 /* Note: animations are called via the controller for both the character and capsule using animator null checks
  */
-// anh am khanh khi player bi ban
+
 namespace StarterAssets
 {
     [RequireComponent(typeof(CharacterController))]
@@ -482,8 +482,7 @@ namespace StarterAssets
             health -= 100;
             if (health <= 0)
             {
-                UiController.instance.setCavaEndGame(true);
-                UiEndGameGP.instance.EndGame("YOU LOSE");
+                UiController.instance.EndGame("YOU LOSE");
             }
         }
 

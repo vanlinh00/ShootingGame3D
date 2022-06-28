@@ -6,10 +6,6 @@ using System.Linq;
 using System.Collections.Generic;
 using DG.Tweening;
 
-// khi co dan bat vao no thi no phai chay ra cho khau
-// neu co the cho boss ban nhau
-// neu co the cho 2 enemy ban nhau
-
 public class EnemyController : BasePlayerController
 {
     [SerializeField] float speed;
@@ -40,26 +36,25 @@ public class EnemyController : BasePlayerController
         }
         else
         {
-            /* 2 enemy shooting
+            // 2 enemy shooting
             int minDistanceBetween2Enemy = GameController.instance.CheckMinMaxDistanceEnemy(this.transform)[0, 1];
-            //  Debug.Log("palyer" + GameController.instance.CheckMinMaxDistanceEnemy(this.transform)[0, 1]);
-            if (minDistanceBetween2Enemy < 39f)
+            if (minDistanceBetween2Enemy < 19f && minDistanceBetween2Enemy != 0)
             {
                 int pos = GameController.instance.CheckMinMaxDistanceEnemy(this.transform)[0, 0];
                 shootTime -= Time.deltaTime;
                 if (shootTime < 0)
                 {
+                    Playershoot();
                     EnemyShooting(GameController.instance._listEnemy[pos].gameObject.transform.position);
                     shootTime = 7f;
                 }
             }
             else
             {
+                PlayerRun();
                 MoveToPoint((GameController.instance._listPoint[randomPosition].transform.position));
             }
-            */
-
-            MoveToPoint((GameController.instance._listPoint[randomPosition].transform.position));
+            // MoveToPoint((GameController.instance._listPoint[randomPosition].transform.position));
         }
     }
     public void addRandomPosition(int a)
@@ -117,8 +112,8 @@ public class EnemyController : BasePlayerController
     }
     private void EnemyMove()
     {
-        float x = Random.RandomRange(-3, 3);
-        float z = Random.RandomRange(-3, 3);
+        float x = Random.RandomRange(-2, 2);
+        float z = Random.RandomRange(-2, 2);
         Vector3 newPosition = new Vector3(transform.position.x + x, transform.position.y, transform.position.z + z);
         PlayerRun();
         transform.DOMove(newPosition, 0.5f);
