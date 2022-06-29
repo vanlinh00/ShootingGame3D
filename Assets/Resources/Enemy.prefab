@@ -600,10 +600,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 8472710115849064774}
   _posGun: {fileID: 8472710116130963222}
+  _healthBar: {fileID: 8472710115974769696}
   speed: 0.001
   _moveToPlayer: {fileID: 0}
   _characterController: {fileID: 8472710115849064775}
-  _healthBar: {fileID: 8472710115974769696}
 --- !u!1 &8472710115885775498
 GameObject:
   m_ObjectHideFlags: 0
@@ -673,7 +673,7 @@ SkinnedMeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8472710115949517048}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
