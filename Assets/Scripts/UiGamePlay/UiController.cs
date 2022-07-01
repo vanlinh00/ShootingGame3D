@@ -52,8 +52,4 @@ public class UiController : MonoBehaviour
             SceneManager.LoadScene(0);
         }
     }
-
-
-
-
 }

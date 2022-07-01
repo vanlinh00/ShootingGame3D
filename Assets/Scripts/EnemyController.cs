@@ -6,7 +6,7 @@ using System.Linq;
 using System.Collections.Generic;
 using DG.Tweening;
 
-public class EnemyController : BasePlayerController
+public class EnemyController : BasePlayerController, IDamageable
 {
     [SerializeField] float speed;
 
@@ -117,5 +117,17 @@ public class EnemyController : BasePlayerController
         Vector3 newPosition = new Vector3(transform.position.x + x, transform.position.y, transform.position.z + z);
         PlayerRun();
         transform.DOMove(newPosition, 0.5f);
+    }
+
+    public void Damage()
+    {
+        UiMainCavasGP.instance.countEnemy();
+        _healthBar.GetComponent<Image>().fillAmount -= 0.1f;
+        health -= 1000;
+        if (health <= 0)
+        {
+            Destroy(this.gameObject);
+
+        }
     }
 }

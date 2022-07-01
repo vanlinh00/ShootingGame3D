@@ -62,16 +62,18 @@ public class BasePlayerController : MonoBehaviour
         _newBullet.GetComponent<Bullet>()._firePoint = _shootPoint;
         Destroy(_vFX_M4, 1);
     }
-    public virtual void muHealp(float n)
-    {
-        UiMainCavasGP.instance.countEnemy();
-        _healthBar.GetComponent<Image>().fillAmount -= n;
-        health -= 1000;
-        if (health <= 0)
-        {
-            Destroy(this.gameObject);
 
-        }
-    }
+    // co the dung ke thua vi enemy va player deu giong nhau, nhung nen dung interface vi tuong lai se co nhieu thu phai damage vd nhu cai thung
+    //public virtual void muHealp(float n)
+    //{
+    //    UiMainCavasGP.instance.countEnemy();
+    //    _healthBar.GetComponent<Image>().fillAmount -= n;
+    //    health -= 1000;
+    //    if (health <= 0)
+    //    {
+    //        Destroy(this.gameObject);
+
+    //    }
+    //}
 
 }

@@ -13,7 +13,7 @@ namespace StarterAssets
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
     [RequireComponent(typeof(PlayerInput))]
 #endif
-    public class ThirdPersonController : BasePlayerController
+    public class ThirdPersonController : BasePlayerController, IDamageable
     {
         /// gap code
 
@@ -476,15 +476,24 @@ namespace StarterAssets
             }
 
         }
-        public override void muHealp(float n)
+        //public override void muHealp(float n)
+        //{
+        //    _healthBar.GetComponent<Image>().fillAmount -= n;
+        //    health -= 100;
+        //    if (health <= 0)
+        //    {
+        //        UiController.instance.EndGame("YOU LOSE");
+        //    }
+        //}
+
+        public void Damage()
         {
-            _healthBar.GetComponent<Image>().fillAmount -= n;
+            _healthBar.GetComponent<Image>().fillAmount -= 0.01f;
             health -= 100;
             if (health <= 0)
             {
                 UiController.instance.EndGame("YOU LOSE");
             }
         }
-
     }
 }

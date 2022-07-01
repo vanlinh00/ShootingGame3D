@@ -28,13 +28,22 @@ public class Bullet : MonoBehaviour
         {
             GameObject _particleBullet = Instantiate(Resources.Load("ParticleBullet", typeof(GameObject)), _firePoint, Quaternion.identity) as GameObject;
             _particleBullet.transform.parent = collision.gameObject.transform;
-            if (collision.gameObject.tag.Equals("Enemy"))
+
+            // cach 1 dung ke thua
+            //if (collision.gameObject.tag.Equals("Enemy"))
+            //{
+            //    collision.gameObject.GetComponent<EnemyController>().muHealp(0.1f);
+            //}
+            //else
+            //{
+            //    collision.gameObject.GetComponent<ThirdPersonController>().muHealp(0.01f);
+            //}
+
+            // cach 2 dung interface
+            IDamageable Damage = collision.gameObject.GetComponent<IDamageable>();
+            if (Damage != null)
             {
-                collision.gameObject.GetComponent<EnemyController>().muHealp(0.1f);
-            }
-            else
-            {
-                collision.gameObject.GetComponent<ThirdPersonController>().muHealp(0.01f);
+                Damage.Damage();
             }
             Destroy(_particleBullet, 2f);
             Destroy(this.gameObject);
