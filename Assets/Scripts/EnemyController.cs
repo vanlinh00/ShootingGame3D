@@ -28,7 +28,7 @@ public class EnemyController : BasePlayerController, IDamageable
     private void FixedUpdate()
     {
         float distanceEtoPlayer = Vector3.Distance(transform.position, _moveToPlayer.position);
-        float distanceEtoDestation = Vector3.Distance(transform.position, GameController.instance._listPoint[randomPosition].transform.position);
+        float distanceEtoDestation = Vector3.Distance(transform.position, EnemyManager.instance._listPoint[randomPosition].transform.position);
 
         if (distanceEtoPlayer < 55f && (distanceEtoDestation > 2 * distanceEtoPlayer) || distanceEtoPlayer < 40f)
         {
@@ -37,22 +37,22 @@ public class EnemyController : BasePlayerController, IDamageable
         else
         {
             // 2 enemy shooting
-            int minDistanceBetween2Enemy = GameController.instance.CheckMinMaxDistanceEnemy(this.transform)[0, 1];
+            int minDistanceBetween2Enemy = EnemyManager.instance.CheckMinMaxDistanceEnemy(this.transform)[0, 1];
             if (minDistanceBetween2Enemy < 19f && minDistanceBetween2Enemy != 0)
             {
-                int pos = GameController.instance.CheckMinMaxDistanceEnemy(this.transform)[0, 0];
+                int pos = EnemyManager.instance.CheckMinMaxDistanceEnemy(this.transform)[0, 0];
                 shootTime -= Time.deltaTime;
                 if (shootTime < 0)
                 {
                     Playershoot();
-                    EnemyShooting(GameController.instance._listEnemy[pos].gameObject.transform.position);
+                    EnemyShooting(EnemyManager.instance._listEnemy[pos].gameObject.transform.position);
                     shootTime = 7f;
                 }
             }
             else
             {
                 PlayerRun();
-                MoveToPoint((GameController.instance._listPoint[randomPosition].transform.position));
+                MoveToPoint((EnemyManager.instance._listPoint[randomPosition].transform.position));
             }
             // MoveToPoint((GameController.instance._listPoint[randomPosition].transform.position));
         }
@@ -65,7 +65,7 @@ public class EnemyController : BasePlayerController, IDamageable
     {
         if ((Vector3.Distance(transform.position, target)) <= 20f)
         {
-            randomPosition = GameController.instance.ranDomDestinationOfEnemy();
+            randomPosition = EnemyManager.instance.ranDomDestinationOfEnemy();
         }
         else
         {

@@ -61,7 +61,7 @@ public class NetworkClient : SocketIOComponent
                if (ClientID == id)// dung cai id dang dang nhap tren may thi tao con may khac khong tao
                {
                    UiController.instance.networkIdentity = ni;
-                   GameController.instance.SetListEnemy(true);
+                   EnemyManager.instance.SetListEnemy(true);
                    // camera for player
                    //_newPlayer.GetComponent<ThirdPersonController>()._healthBar = UiController.instance._healthBar;
 
@@ -69,7 +69,7 @@ public class NetworkClient : SocketIOComponent
                    CinemachineVirtualCamera _newCamera = Instantiate(Resources.Load("PlayerFollowCamera", typeof(CinemachineVirtualCamera)), new Vector3(0, 0, 0), Quaternion.identity) as CinemachineVirtualCamera;
                    CinemachineVirtualCamera _PlayerShootCamera = Instantiate(Resources.Load("PlayerShootCamera", typeof(CinemachineVirtualCamera)), new Vector3(0, 0, 0), Quaternion.identity) as CinemachineVirtualCamera;
                    _newCamera.Follow = PlayerCameraRoot.transform;
-                   CameraController.instance.PlayerFollowCamera = _newCamera;
+                   CameraController.instance._playerFollowCamera = _newCamera;
                    _PlayerShootCamera.Follow = PlayerCameraRoot.transform;
                    CameraController.instance._vrCamShoot = _PlayerShootCamera;
 

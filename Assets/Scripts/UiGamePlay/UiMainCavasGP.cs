@@ -29,7 +29,7 @@ public class UiMainCavasGP : MonoBehaviour
     }
     public void countEnemy()
     {
-        if (GameController.instance._isCreateAllEnemy == true)
+        if (EnemyManager.instance._isCreateAllEnemy == true)
         {
             GameObject _allEnemy = GameObject.Find("AllEnemy");
             int countE = _allEnemy.transform.childCount;

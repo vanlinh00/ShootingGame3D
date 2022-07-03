@@ -10,7 +10,7 @@ public class CameraController : MonoBehaviour
 
     public CinemachineVirtualCamera _vrCamShoot;
 
-    public CinemachineVirtualCamera PlayerFollowCamera;
+    public CinemachineVirtualCamera _playerFollowCamera;
     private void Awake()
     {
 
@@ -31,7 +31,7 @@ public class CameraController : MonoBehaviour
     }
     public void CameraFLlowPlayer(GameObject target)
     {
-        PlayerFollowCamera.Follow = target.transform;
+        _playerFollowCamera.Follow = target.transform;
     }
     public void VrCamShootFLlowPlayer(GameObject target)
     {
