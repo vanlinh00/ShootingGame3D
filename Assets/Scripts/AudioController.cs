@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // tim cach update cai audio controller nay  lam the nay thi rat mat cong
-public class AudioController : MonoBehaviour
+public class AudioController : Singleton<AudioController>
 {
-    public static AudioController instance;
     [SerializeField] AudioClip _mainMenuGameClip;
     [SerializeField] AudioClip _akFireClip;
 
@@ -16,22 +15,14 @@ public class AudioController : MonoBehaviour
 
     private AudioSource _audioSoure;
 
-    void Awake()
+    protected override void Awake()
     {
-        if (instance != null && instance != this)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            instance = this;
-        }
+        base.Awake();
     }
 
     void Start()
     {
         _audioSoure = GetComponent<AudioSource>();
-        DontDestroyOnLoad(this);
     }
 
     void Update()

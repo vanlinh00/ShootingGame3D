@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameController : MonoBehaviour
+public class GameController : Singleton<GameController>
 {
-    public static GameController instance;
 
-    private void Awake()
+
+    protected override void Awake()
     {
+        base.Awake();
         Cursor.visible = false;
-        instance = this;
         AudioController.instance.OnGame();
         AudioController.instance.CountStartGame();
     }
