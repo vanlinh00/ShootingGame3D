@@ -3,12 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// chi may giay cho bat 1 lan chua ba lien tuc hoi ghe
-// nem bom
-// khi boss tren con lai cai hom do
-// ra nhat co vu khi
-// co tu do
-// M4  ban vao dau 1 phat di luong
 public class Bullet : MonoBehaviour
 {
     public Vector3 _firePoint { get; set; }

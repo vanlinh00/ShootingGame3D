@@ -19,12 +19,10 @@ public class AudioController : Singleton<AudioController>
     {
         base.Awake();
     }
-
     void Start()
     {
         _audioSoure = GetComponent<AudioSource>();
     }
-
     void Update()
     {
 

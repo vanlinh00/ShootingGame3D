@@ -4,6 +4,6 @@ using UnityEngine;
 using UnityEngine.Events;
 public static class EventManager
 {
-    public static event UnityAction CoinCollected;
-    public static void OnCoinCollected() => CoinCollected?.Invoke();
+    public static event UnityAction EnemyDeath;
+    public static void OnEnemyDeath() => EnemyDeath?.Invoke();
 }

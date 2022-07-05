@@ -3,26 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class CameraController : MonoBehaviour
 {
     public static CameraController instance;
-
-    public CinemachineVirtualCamera _vrCamShoot;
-
-    public CinemachineVirtualCamera _playerFollowCamera;
-    private void Awake()
-    {
-
-    }
-    void Start()
+    [SerializeField] GameObject _vrCamShoot;
+    [SerializeField] GameObject _playerFollowCamera;
+    void Awake()
     {
         instance = this;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
 
     }
     public void PlayerSniperCult(bool a)
@@ -31,10 +19,10 @@ public class CameraController : MonoBehaviour
     }
     public void CameraFLlowPlayer(GameObject target)
     {
-        _playerFollowCamera.Follow = target.transform;
+        _playerFollowCamera.GetComponent<CinemachineVirtualCamera>().Follow = target.transform;
     }
     public void VrCamShootFLlowPlayer(GameObject target)
     {
-        _vrCamShoot.Follow = target.transform;
+        _vrCamShoot.GetComponent<CinemachineVirtualCamera>().Follow = target.transform;
     }
 }

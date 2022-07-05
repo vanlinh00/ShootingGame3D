@@ -20,17 +20,6 @@ public class EnemyManager : MonoBehaviour
         SetListEnemy(true);
     }
 
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void BornAllEnemy()
     {
         for (int i = 0; i < _listPoint.Count; i++)

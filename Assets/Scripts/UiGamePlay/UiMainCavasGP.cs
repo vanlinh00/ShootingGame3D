@@ -1,24 +1,47 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UiMainCavasGP : MonoBehaviour
+public class UiMainCavasGP : Singleton<UiMainCavasGP>
 {
-    public static UiMainCavasGP instance;
-
     [SerializeField] Text _txtCountStartGame;
 
     [SerializeField] Text _countEnemy;
+    int _totalEnemyCurrent = 0;
+    int _totalEnemy = 0;
 
     float coutTime = 3.2f;
-    private void Awake()
+    protected override void Awake()
     {
-        instance = this;
+        base.Awake();
     }
     void Start()
     {
-        _countEnemy.text = "19/19";
+        if (EnemyManager.instance._isCreateAllEnemy == true)
+        {
+            _totalEnemyCurrent = EnemyManager.instance._listEnemy.Count;
+            _totalEnemy = _totalEnemyCurrent;
+            _countEnemy.text = _totalEnemyCurrent + "/" + _totalEnemy;
+        }
+    }
+    private void OnEnable()
+    {
+        EventManager.EnemyDeath += EventManagerOnEnemyDeath;
+    }
+    private void OnDisable()
+    {
+        EventManager.EnemyDeath -= EventManagerOnEnemyDeath;
+    }
+    private void EventManagerOnEnemyDeath()
+    {
+        _totalEnemyCurrent--;
+        _countEnemy.text = _totalEnemyCurrent + "/" + _totalEnemy;
+        if (_totalEnemyCurrent <= 0)
+        {
+            UiController.instance.EndGame("YOU WIN");
+        }
     }
     void Update()
     {
@@ -26,21 +49,6 @@ public class UiMainCavasGP : MonoBehaviour
         {
             CountTimeStartGame();
         }
-    }
-    public void countEnemy()
-    {
-        if (EnemyManager.instance._isCreateAllEnemy == true)
-        {
-            GameObject _allEnemy = GameObject.Find("AllEnemy");
-            int countE = _allEnemy.transform.childCount;
-            _countEnemy.text = countE + "/18";
-
-            if (countE <= 0)
-            {
-                UiController.instance.EndGame("YOU WIN");
-            }
-        }
-
     }
     public void CountTimeStartGame()
     {

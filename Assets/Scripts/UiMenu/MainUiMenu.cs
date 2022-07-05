@@ -13,14 +13,7 @@ public class MainUiMenu : MonoBehaviour
         _btMiddleRight.onClick.AddListener(NextAnimationr);
         _btShop.onClick.AddListener(OpenShop);
     }
-    void Start()
-    {
 
-    }
-    void Update()
-    {
-
-    }
     void OpenShop()
     {
         AudioController.instance.OnGame();

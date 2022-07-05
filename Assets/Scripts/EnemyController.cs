@@ -123,11 +123,12 @@ public class EnemyController : BasePlayerController, IDamageable
 
     public void Damage()
     {
-        UiMainCavasGP.instance.countEnemy();
+        // UiMainCavasGP.instance.countEnemy();
         _healthBar.GetComponent<Image>().fillAmount -= 0.1f;
         health -= 1000;
         if (health <= 0)
         {
+            EventManager.OnEnemyDeath();
             Destroy(this.gameObject);
 
         }
