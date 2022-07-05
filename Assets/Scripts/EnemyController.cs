@@ -15,7 +15,7 @@ public class EnemyController : BasePlayerController, IDamageable
     [SerializeField] CharacterController _characterController;
 
     private int randomPosition;
-    float shootTime = 3f;
+    float shootTime = 1f;
     private void Awake()
     {
 
@@ -90,16 +90,18 @@ public class EnemyController : BasePlayerController, IDamageable
             {
                 Playershoot();
                 EnemyShooting(_moveToPlayer.position);
-                shootTime = 3f;
+                shootTime = 1f;
             }
         }
     }
     public void EnemyShooting(Vector3 positionPlayer)
     {
+        float yRandom = Random.RandomRange(-4, 4);
+
         transform.LookAt(positionPlayer);
         Vector3 target = new Vector3();
         target.x = positionPlayer.x;
-        target.y = positionPlayer.y + 2f;
+        target.y = positionPlayer.y + yRandom;
         target.z = positionPlayer.z;
         Shooting(target);
     }

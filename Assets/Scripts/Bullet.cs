@@ -50,7 +50,7 @@ public class Bullet : MonoBehaviour
         }
         else
         {
-            Destroy(this.gameObject, 0.5f);
+            Destroy(this.gameObject);
         }
     }
 }

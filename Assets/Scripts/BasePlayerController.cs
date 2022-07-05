@@ -60,6 +60,7 @@ public class BasePlayerController : MonoBehaviour
         GameObject _newBullet = Instantiate(Resources.Load("Bullet", typeof(GameObject)), _posGun.position, _posGun.rotation) as GameObject;
         GameObject _vFX_M4 = Instantiate(Resources.Load("VFX_M4", typeof(GameObject)), _posGun.position, _posGun.rotation) as GameObject;
         _newBullet.GetComponent<Bullet>()._firePoint = _shootPoint;
+        Destroy(_newBullet, 0.1f);
         Destroy(_vFX_M4, 1);
     }
 
