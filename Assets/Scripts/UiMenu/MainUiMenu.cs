@@ -16,13 +16,13 @@ public class MainUiMenu : MonoBehaviour
 
     void OpenShop()
     {
-        AudioController.instance.OnGame();
+        SoundManager.instance.OnPlayAudio(SoundType.ButtonBlip);
         CavasControllerMenu.Instance.SetActivePlayer(false);
         CavasControllerMenu.Instance.SetActiveShopUi(true);
     }
     void NextAnimationl()
     {
-        AudioController.instance.ButtonClick();
+        SoundManager.instance.OnPlayAudio(SoundType.ButtonBlip);
         ChangeAniPlayer.instance.ChangeAnimaiton(true);
 
         if (ChangeAniPlayer.instance.checkNextAnim == 0)
@@ -32,7 +32,7 @@ public class MainUiMenu : MonoBehaviour
     }
     void NextAnimationr()
     {
-        AudioController.instance.ButtonClick();
+        SoundManager.instance.OnPlayAudio(SoundType.ButtonBlip);
         ChangeAniPlayer.instance.ChangeAnimaiton(false);
 
         if (ChangeAniPlayer.instance.checkNextAnim != 0)

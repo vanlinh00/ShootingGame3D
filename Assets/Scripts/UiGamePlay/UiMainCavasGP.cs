@@ -7,8 +7,8 @@ using UnityEngine.UI;
 public class UiMainCavasGP : Singleton<UiMainCavasGP>
 {
     [SerializeField] Text _txtCountStartGame;
-
     [SerializeField] Text _countEnemy;
+
     int _totalEnemyCurrent = 0;
     int _totalEnemy = 0;
 

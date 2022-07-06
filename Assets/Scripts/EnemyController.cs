@@ -15,10 +15,11 @@ public class EnemyController : BasePlayerController, IDamageable
     [SerializeField] CharacterController _characterController;
 
     private int randomPosition;
-    float shootTime = 1f;
+    float shootTime = 3f;
+    float shootTimeOld;
     private void Awake()
     {
-
+        shootTimeOld = 3f;
     }
     private void Start()
     {
@@ -41,12 +42,13 @@ public class EnemyController : BasePlayerController, IDamageable
             if (minDistanceBetween2Enemy < 19f && minDistanceBetween2Enemy != 0)
             {
                 int pos = EnemyManager.instance.CheckMinMaxDistanceEnemy(this.transform)[0, 0];
+
                 shootTime -= Time.deltaTime;
                 if (shootTime < 0)
                 {
                     Playershoot();
                     EnemyShooting(EnemyManager.instance._listEnemy[pos].gameObject.transform.position);
-                    shootTime = 7f;
+                    shootTime = shootTimeOld;
                 }
             }
             else
@@ -90,7 +92,7 @@ public class EnemyController : BasePlayerController, IDamageable
             {
                 Playershoot();
                 EnemyShooting(_moveToPlayer.position);
-                shootTime = 1f;
+                shootTime = shootTimeOld;
             }
         }
     }

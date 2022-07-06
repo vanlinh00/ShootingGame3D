@@ -10,7 +10,7 @@ public class Bullet : MonoBehaviour
 
     void Start()
     {
-        AudioController.instance.AkFire();
+
     }
     private void Update()
     {

@@ -21,7 +21,7 @@ public class MainUiRightMenu : MonoBehaviour
     }
     void OnPlayGame()
     {
-        AudioController.instance.ButtonClick();
+        MusicManager.instance.OnPlayMusic(MusicType.CountDown);
         SceneManager.LoadScene(1);
     }
 

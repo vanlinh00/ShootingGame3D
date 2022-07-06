@@ -26,7 +26,6 @@ public class UiShop : MonoBehaviour
 
     void DisableShopUi()
     {
-        AudioController.instance.MainMenuGame();
         CavasControllerMenu.Instance.SetActivePlayer(true);
         CavasControllerMenu.Instance.SetActiveShopUi(false);
     }

@@ -1,10 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class ChangeAniPlayer : BasePlayerController
 {
-    // vuot man hinh de xoay nhan vat
     public static ChangeAniPlayer instance;
     public int checkNextAnim = 0;
 

@@ -449,6 +449,7 @@ namespace StarterAssets
             }
             if (Input.GetMouseButtonDown(0))
             {
+                SoundManager.instance.OnPlayAudio(SoundType.Awm);
                 UiScopeGP.instance.setAniGunShooting(true);
                 Shooting(_shootPoint);
             }

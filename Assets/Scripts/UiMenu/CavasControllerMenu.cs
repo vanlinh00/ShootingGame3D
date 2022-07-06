@@ -4,12 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-// tim hieu cach lam so de lam ngon hon cho onclick nay trong unity 3d vietnam co hoc di
-// cai nay can update cho de the nay qua khong on
-
-/*
- * lam them chuc nang mua sung va save sung
- */
 public class CavasControllerMenu : MonoBehaviour
 {
     public static CavasControllerMenu Instance;
@@ -24,8 +18,7 @@ public class CavasControllerMenu : MonoBehaviour
     }
     void Start()
     {
-        // SetActiveShopUi(false);
-        AudioController.instance.MainMenuGame();
+        MusicManager.instance.OnPlayMusic(MusicType.MainMenu);
     }
     void Update()
     {
@@ -39,6 +32,4 @@ public class CavasControllerMenu : MonoBehaviour
     {
         _shopUi.SetActive(res);
     }
-
-
 }
