@@ -19,6 +19,7 @@ public class MainUiMenu : MonoBehaviour
         SoundManager.instance.OnPlayAudio(SoundType.ButtonBlip);
         CavasControllerMenu.Instance.SetActivePlayer(false);
         CavasControllerMenu.Instance.SetActiveShopUi(true);
+        UiShopeSelectGun.instance.setActiveGunDisplay(true);
     }
     void NextAnimationl()
     {
