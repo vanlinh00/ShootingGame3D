@@ -2,16 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class MainUiMenu : MonoBehaviour
+public class MainUiMenu : Singleton<MainUiMenu>
 {
     [SerializeField] Button _btMiddleLeft;
     [SerializeField] Button _btMiddleRight;
     [SerializeField] Button _btShop;
-    private void Awake()
+    [SerializeField] Animator animator;
+    protected override void Awake()
     {
+        base.Awake();
         _btMiddleLeft.onClick.AddListener(NextAnimationl);
         _btMiddleRight.onClick.AddListener(NextAnimationr);
         _btShop.onClick.AddListener(OpenShop);
+    }
+    public void SetAnimator(string nameParameters)
+    {
+        animator.SetTrigger(nameParameters);
     }
 
     void OpenShop()
@@ -19,6 +25,9 @@ public class MainUiMenu : MonoBehaviour
         SoundManager.instance.OnPlayAudio(SoundType.ButtonBlip);
         CavasControllerUiMenu.Instance.SetActivePlayer(false);
         CavasControllerUiMenu.Instance.SetActiveShopUi(true);
+        RightTopRightUiShop.instance.SetActiveGunCurrent(true);
+        SetAnimator("OutMain");
+
     }
     void NextAnimationl()
     {

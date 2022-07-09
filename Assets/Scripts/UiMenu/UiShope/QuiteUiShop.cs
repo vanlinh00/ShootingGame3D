@@ -19,6 +19,8 @@ public class QuiteUiShop : MonoBehaviour
     {
         CavasControllerUiMenu.Instance.SetActivePlayer(true);
         CavasControllerUiMenu.Instance.SetActiveShopUi(false);
+        RightTopRightUiShop.instance.SetActiveGunCurrent(false);
+        MainUiMenu.instance.SetAnimator("InMain");
     }
 
 }

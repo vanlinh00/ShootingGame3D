@@ -9,6 +9,7 @@ public class CavasControllerUiMenu : MonoBehaviour
     public static CavasControllerUiMenu Instance;
     [SerializeField] GameObject _mainUi;
     [SerializeField] GameObject _shopUi;
+    [SerializeField] GameObject _rankUi;
 
     [SerializeField] GameObject _player;
 
@@ -31,5 +32,9 @@ public class CavasControllerUiMenu : MonoBehaviour
     public void SetActiveShopUi(bool res)
     {
         _shopUi.SetActive(res);
+    }
+    public void SetActiveRankUi(bool res)
+    {
+        _rankUi.SetActive(res);
     }
 }
