@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class CavasControllerMenu : MonoBehaviour
+public class CavasControllerUiMenu : MonoBehaviour
 {
-    public static CavasControllerMenu Instance;
+    public static CavasControllerUiMenu Instance;
     [SerializeField] GameObject _mainUi;
     [SerializeField] GameObject _shopUi;
 

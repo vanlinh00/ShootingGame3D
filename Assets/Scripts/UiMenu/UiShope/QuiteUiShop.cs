@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UiShopQuite : MonoBehaviour
+public class QuiteUiShop : MonoBehaviour
 {
-    public static UiShopQuite instance;
+    public static QuiteUiShop instance;
 
     [SerializeField] Button btBackGround;
     [SerializeField] Button btQuite;
@@ -17,9 +17,8 @@ public class UiShopQuite : MonoBehaviour
     }
     void DisableShopUi()
     {
-        CavasControllerMenu.Instance.SetActivePlayer(true);
-        CavasControllerMenu.Instance.SetActiveShopUi(false);
-        UiShopeSelectGun.instance.setActiveGunDisplay(false);
+        CavasControllerUiMenu.Instance.SetActivePlayer(true);
+        CavasControllerUiMenu.Instance.SetActiveShopUi(false);
     }
 
 }

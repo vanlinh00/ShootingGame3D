@@ -1,19 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class ChangeAniPlayer : BasePlayerController
+public class ChangeAniPlayerUiMenu : BasePlayerController
 {
-    public static ChangeAniPlayer instance;
+    public static ChangeAniPlayerUiMenu instance;
     public int checkNextAnim = 0;
 
     void Start()
     {
         instance = this;
-
-    }
-
-    void Update()
-    {
 
     }
     public void ChangeAnimaiton(bool isBtRight)

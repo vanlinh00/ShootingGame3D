@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class UiShopeRightTopRight : Singleton<UiShopeRightTopRight>
+public class RightTopRightUiShope : Singleton<RightTopRightUiShope>
 {
     [SerializeField] Image _barDamage;
     [SerializeField] Image _barRateOfFire;

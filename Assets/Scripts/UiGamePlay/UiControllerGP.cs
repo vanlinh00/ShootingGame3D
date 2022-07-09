@@ -5,14 +5,17 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
-public class UiController : Singleton<UiController>
+public class UiControllerGP : Singleton<UiControllerGP>
 {
 
     [SerializeField] GameObject _cavaAndGame;
 
     [SerializeField] GameObject _uiPickUp;
+    protected override void Awake()
+    {
+        base.Awake();
 
-    public NetworkIdentity networkIdentity;  // for game online
+    }
 
     void Start()
     {

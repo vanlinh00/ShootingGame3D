@@ -40,7 +40,7 @@ public class UiMainCavasGP : Singleton<UiMainCavasGP>
         _countEnemy.text = _totalEnemyCurrent + "/" + _totalEnemy;
         if (_totalEnemyCurrent <= 0)
         {
-            UiController.instance.EndGame("YOU WIN");
+            UiControllerGP.instance.EndGame("YOU WIN");
         }
     }
     void Update()

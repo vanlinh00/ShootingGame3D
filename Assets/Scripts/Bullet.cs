@@ -7,11 +7,6 @@ public class Bullet : MonoBehaviour
 {
     public Vector3 _firePoint { get; set; }
     public int _posPlayerShooting { get; set; }
-
-    void Start()
-    {
-
-    }
     private void Update()
     {
         transform.position = Vector3.Lerp(transform.position, _firePoint, 2f * Time.timeScale);

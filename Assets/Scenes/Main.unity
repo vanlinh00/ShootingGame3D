@@ -5838,7 +5838,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 86.94}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &510424197 stripped
@@ -10798,7 +10798,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -104.66667}
+  m_AnchoredPosition: {x: 0, y: 98.7}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &827519282
@@ -10919,7 +10919,7 @@ Transform:
   - {fileID: 1323760615}
   - {fileID: 125164421}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &834266022
 MonoBehaviour:
@@ -12103,7 +12103,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cavaAndGame: {fileID: 1562834104}
   _uiPickUp: {fileID: 1930104756}
-  networkIdentity: {fileID: 0}
 --- !u!4 &905946912
 Transform:
   m_ObjectHideFlags: 0
@@ -12116,7 +12115,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &907669963
 PrefabInstance:
@@ -18903,7 +18902,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 98.85, y: 0, z: 0}
 --- !u!1 &1428168978
 GameObject:
@@ -22304,7 +22303,7 @@ Transform:
   - {fileID: 885361623}
   - {fileID: 95618122}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1716865665
 GameObject:
@@ -23752,7 +23751,7 @@ GameObject:
   - component: {fileID: 1807336285}
   - component: {fileID: 1807336284}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: gun_image02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25240,7 +25239,7 @@ GameObject:
   - component: {fileID: 1908005676}
   - component: {fileID: 1908005675}
   m_Layer: 5
-  m_Name: Button
+  m_Name: gun_image01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28807,7 +28806,7 @@ Transform:
   m_Children:
   - {fileID: 751128671015884607}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &751128670558217988
 GameObject:
@@ -29443,7 +29442,7 @@ Transform:
   - {fileID: 2369246711833364011}
   - {fileID: 1266865613}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1540911467402018146
 GameObject:
@@ -29517,56 +29516,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 635465729092513450}
   m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1581321873674698680
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1581321873674698686}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1018d57a57e6544881fefeba0f454e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  url: ws://gameshooting3d.herokuapp.com/socket.io/?EIO=3&transport=websocket
-  autoConnect: 1
-  reconnectDelay: 5
-  ackExpirationTime: 30
-  pingInterval: 25
-  pingTimeout: 60
-  NetworkContainer: {fileID: 0}
---- !u!1 &1581321873674698686
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1581321873674698687}
-  - component: {fileID: 1581321873674698680}
-  m_Layer: 0
-  m_Name: '[ Code-NetWorking ]'
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1581321873674698687
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1581321873674698686}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -199.55933, y: 1.1883134, z: 55.935867}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1615247403562755632
 GameObject:
@@ -29850,7 +29799,6 @@ MonoBehaviour:
   _healthBar: {fileID: 4310903668621359858}
   _characterController: {fileID: 2190031800119222786}
   speed: 1.3
-  networkIndentity: {fileID: 0}
   MoveSpeed: 4.31
   SprintSpeed: 5.335
   RotationSmoothTime: 0.3
@@ -33669,7 +33617,7 @@ Transform:
   m_Children:
   - {fileID: 7031072162027043498}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7031072162242752038
 GameObject:

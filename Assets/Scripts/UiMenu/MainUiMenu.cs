@@ -17,16 +17,15 @@ public class MainUiMenu : MonoBehaviour
     void OpenShop()
     {
         SoundManager.instance.OnPlayAudio(SoundType.ButtonBlip);
-        CavasControllerMenu.Instance.SetActivePlayer(false);
-        CavasControllerMenu.Instance.SetActiveShopUi(true);
-        UiShopeSelectGun.instance.setActiveGunDisplay(true);
+        CavasControllerUiMenu.Instance.SetActivePlayer(false);
+        CavasControllerUiMenu.Instance.SetActiveShopUi(true);
     }
     void NextAnimationl()
     {
         SoundManager.instance.OnPlayAudio(SoundType.ButtonBlip);
-        ChangeAniPlayer.instance.ChangeAnimaiton(true);
+        ChangeAniPlayerUiMenu.instance.ChangeAnimaiton(true);
 
-        if (ChangeAniPlayer.instance.checkNextAnim == 0)
+        if (ChangeAniPlayerUiMenu.instance.checkNextAnim == 0)
         {
             _btMiddleLeft.gameObject.SetActive(false);
         }
@@ -34,9 +33,9 @@ public class MainUiMenu : MonoBehaviour
     void NextAnimationr()
     {
         SoundManager.instance.OnPlayAudio(SoundType.ButtonBlip);
-        ChangeAniPlayer.instance.ChangeAnimaiton(false);
+        ChangeAniPlayerUiMenu.instance.ChangeAnimaiton(false);
 
-        if (ChangeAniPlayer.instance.checkNextAnim != 0)
+        if (ChangeAniPlayerUiMenu.instance.checkNextAnim != 0)
         {
             _btMiddleLeft.gameObject.SetActive(true);
         }

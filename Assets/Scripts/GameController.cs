@@ -8,8 +8,6 @@ public class GameController : Singleton<GameController>
     {
         base.Awake();
         Cursor.visible = false;
-        // AudioController.instance.OnGame();
-        //AudioController.instance.CountStartGame();
     }
     public void Start()
     {

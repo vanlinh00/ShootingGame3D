@@ -23,7 +23,6 @@ public class EnemyController : BasePlayerController, IDamageable
     }
     private void Start()
     {
-        ///_moveToPlayer = GameObject.Find(NetworkClient.ClientID).transform; // for GameOnline
         _moveToPlayer = GameObject.Find("Player").transform;
     }
     private void FixedUpdate()
@@ -125,7 +124,6 @@ public class EnemyController : BasePlayerController, IDamageable
 
     public void Damage()
     {
-        // UiMainCavasGP.instance.countEnemy();
         _healthBar.GetComponent<Image>().fillAmount -= 0.1f;
         health -= 1000;
         if (health <= 0)

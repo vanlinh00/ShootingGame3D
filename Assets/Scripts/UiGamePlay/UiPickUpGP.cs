@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UiShope : MonoBehaviour
+public class UiPickUpGP : MonoBehaviour
 {
 
     void Start()
@@ -10,7 +10,6 @@ public class UiShope : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
 

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class UiShopeSelectGun : Singleton<UiShopeSelectGun>
 {
+    /*
     [SerializeField] List<Button> _listButtonGun;
     [SerializeField] GameObject _buttonGunOpen;
     [SerializeField] GameObject _buttonGunClose;
@@ -17,28 +18,29 @@ public class UiShopeSelectGun : Singleton<UiShopeSelectGun>
     protected override void Awake()
     {
         base.Awake();
-        countGunOfPlayer = 2;
-        countALLGunOfGame = 10;
-        OnLoadDataGunButton(countALLGunOfGame, countGunOfPlayer);
-        for (int i = 0; i < _listButtonGun.Count; i++)
-        {
-            int temp = i;
-            _listButtonGun[i].onClick.AddListener(() =>
-            {
-                LoadGun(temp);
-            });
 
-        }
+        //countGunOfPlayer = 2;
+        //countALLGunOfGame = 10;
+        //OnLoadDataGunButton(countALLGunOfGame, countGunOfPlayer);
+        //for (int i = 0; i < _listButtonGun.Count; i++)
+        //{
+        //    int temp = i;
+        //    _listButtonGun[i].onClick.AddListener(() =>
+        //    {
+        //        LoadGun(temp);
+        //    });
+
+        //}
     }
     private void Start()
     {
-        Gun inforGun = new Gun();
-        inforGun.id = 0;
-        inforGun.damage = 0.5f;
-        inforGun.rateOfFire = 0.5f;
-        inforGun.accuracy = 0.5f;
+        //    Gun inforGun = new Gun();
+        //    inforGun.id = 0;
+        //    inforGun.damage = 0.5f;
+        //    inforGun.rateOfFire = 0.5f;
+        //    inforGun.accuracy = 0.5f;
 
-        CreateNewGun(0);
+        //    CreateNewGun(0);
     }
     private void OnLoadDataGunButton(int countAllGun, int countGunOpen)
     {
@@ -48,14 +50,14 @@ public class UiShopeSelectGun : Singleton<UiShopeSelectGun>
             if (i <= countGunOpen)
             {
                 newButtonGun = Instantiate(_buttonGunOpen, this.transform.position, Quaternion.identity, this.gameObject.transform);
-                newButtonGun.transform.GetChild(0).GetComponent<ButtonGun>().idGun = i;
+                //newButtonGun.transform.GetChild(0).GetComponent<ButtonGun>().idGun = i;
                 _listButtonGun.Add(newButtonGun.transform.GetChild(0).GetComponent<Button>());
 
             }
             else
             {
                 newButtonGun = Instantiate(_buttonGunClose, this.transform.position, Quaternion.identity, this.gameObject.transform);
-                newButtonGun.transform.GetChild(4).GetComponent<ButtonGun>().idGun = i;
+                // newButtonGun.transform.GetChild(4).GetComponent<ButtonGun>().idGun = i;
                 _listButtonGun.Add(newButtonGun.transform.GetChild(4).GetComponent<Button>());
             }
 
@@ -93,7 +95,7 @@ public class UiShopeSelectGun : Singleton<UiShopeSelectGun>
         _newGun.GetComponent<Gun>().rateOfFire = inforGun.rateOfFire;
         _newGun.GetComponent<Gun>().accuracy = inforGun.accuracy;
 
-        UiShopeRightTopRight.instance.ChangePropertiesGun(inforGun.damage, inforGun.rateOfFire, inforGun.accuracy);
+        RightTopRightUiShope.instance.ChangePropertiesGun(inforGun.damage, inforGun.rateOfFire, inforGun.accuracy);
         _gunLoadCurrent = _newGun;
     }
     public void setActiveGunDisplay(bool res)
@@ -103,4 +105,5 @@ public class UiShopeSelectGun : Singleton<UiShopeSelectGun>
             _gunLoadCurrent.SetActive(res);
         }
     }
+    */
 }

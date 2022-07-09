@@ -32,10 +32,6 @@ namespace StarterAssets
         Vector3 _shootPoint;
 
 
-        /// 
-        [SerializeField]
-        private NetworkIdentity networkIndentity;
-
         [Header("Player")]
         [Tooltip("Move speed of the character in m/s")]
         public float MoveSpeed = 2.0f;
@@ -493,7 +489,7 @@ namespace StarterAssets
             health -= 100;
             if (health <= 0)
             {
-                UiController.instance.EndGame("YOU LOSE");
+                UiControllerGP.instance.EndGame("YOU LOSE");
             }
         }
     }

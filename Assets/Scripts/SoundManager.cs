@@ -11,15 +11,6 @@ public enum SoundType
 public class SoundManager : Singleton<SoundManager>
 {
     public AudioSource audioFx;
-    void Start()
-    {
-
-    }
-
-    void Update()
-    {
-
-    }
     private void OnValidate()
     {
         if (audioFx == null)

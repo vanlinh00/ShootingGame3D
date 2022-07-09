@@ -2,20 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GunController : MonoBehaviour
+public class ItemController : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag.Equals("Player"))
         {
-            UiController.instance.SetVisibleUiPickUp(true);
+            UiControllerGP.instance.SetVisibleUiPickUp(true);
         }
     }
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag.Equals("Player"))
         {
-            UiController.instance.SetVisibleUiPickUp(false);
+            UiControllerGP.instance.SetVisibleUiPickUp(false);
         }
     }
 }
