@@ -19,23 +19,28 @@ public class UiShopeSelectGun : Singleton<UiShopeSelectGun>
         base.Awake();
         countGunOfPlayer = 2;
         countALLGunOfGame = 10;
-        OnLoadDataGun(countALLGunOfGame, countGunOfPlayer);
+        OnLoadDataGunButton(countALLGunOfGame, countGunOfPlayer);
         for (int i = 0; i < _listButtonGun.Count; i++)
         {
             int temp = i;
             _listButtonGun[i].onClick.AddListener(() =>
             {
-                loadGun(temp);
+                LoadGun(temp);
             });
 
         }
     }
     private void Start()
     {
-        GameObject _newGun = Instantiate(Resources.Load("ShopeGun/Gun_0", typeof(GameObject)), _positionGun, Quaternion.identity) as GameObject;
-        _gunLoadCurrent = _newGun;
+        Gun inforGun = new Gun();
+        inforGun.id = 0;
+        inforGun.damage = 0.5f;
+        inforGun.rateOfFire = 0.5f;
+        inforGun.accuracy = 0.5f;
+
+        CreateNewGun(0);
     }
-    private void OnLoadDataGun(int countAllGun, int countGunOpen)
+    private void OnLoadDataGunButton(int countAllGun, int countGunOpen)
     {
         for (int i = 0; i < countAllGun; i++)
         {
@@ -43,22 +48,52 @@ public class UiShopeSelectGun : Singleton<UiShopeSelectGun>
             if (i <= countGunOpen)
             {
                 newButtonGun = Instantiate(_buttonGunOpen, this.transform.position, Quaternion.identity, this.gameObject.transform);
+                newButtonGun.transform.GetChild(0).GetComponent<ButtonGun>().idGun = i;
+                _listButtonGun.Add(newButtonGun.transform.GetChild(0).GetComponent<Button>());
+
             }
             else
             {
                 newButtonGun = Instantiate(_buttonGunClose, this.transform.position, Quaternion.identity, this.gameObject.transform);
+                newButtonGun.transform.GetChild(4).GetComponent<ButtonGun>().idGun = i;
+                _listButtonGun.Add(newButtonGun.transform.GetChild(4).GetComponent<Button>());
             }
-            newButtonGun.GetComponent<ButtonGun>().idGun = i;
 
-            _listButtonGun.Add(newButtonGun.GetComponent<Button>());
         }
     }
-    void loadGun(int idButton)
+    void LoadGun(int idButton)
     {
-        setActiveGunDisplay(false);
-        Destroy(_gunLoadCurrent);
+        if (countGunOfPlayer >= idButton)
+        {
+            setActiveGunDisplay(false);
+            Destroy(_gunLoadCurrent);
+
+            CreateNewGun(idButton);
+        }
+        else
+        {
+            Debug.Log("chua du tuoi nhe pro");
+        }
+
+    }
+    void CreateNewGun(int idButton)
+    {
+
+        Gun inforGun = new Gun();
+        inforGun.id = idButton;
+        inforGun.damage = 0.5f;
+        inforGun.rateOfFire = 0.5f;
+        inforGun.accuracy = 0f;
+
         string nameGun = "Gun_" + idButton;
         GameObject _newGun = Instantiate(Resources.Load("ShopeGun/" + nameGun, typeof(GameObject)), _positionGun, Quaternion.identity) as GameObject;
+        _newGun.AddComponent<Gun>();
+        _newGun.GetComponent<Gun>().id = inforGun.id;
+        _newGun.GetComponent<Gun>().damage = inforGun.damage;
+        _newGun.GetComponent<Gun>().rateOfFire = inforGun.rateOfFire;
+        _newGun.GetComponent<Gun>().accuracy = inforGun.accuracy;
+
+        UiShopeRightTopRight.instance.ChangePropertiesGun(inforGun.damage, inforGun.rateOfFire, inforGun.accuracy);
         _gunLoadCurrent = _newGun;
     }
     public void setActiveGunDisplay(bool res)
