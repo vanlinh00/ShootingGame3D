@@ -4,10 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 public class RightTopRightUiShop : Singleton<RightTopRightUiShop>
 {
-    [SerializeField] Image _barDamageGun;
-    [SerializeField] Image _barRateOfFireGun;
-    [SerializeField] Image _barAccuracyGun;
-    [SerializeField] Text _nameGun;
+    [SerializeField] Image _barDamageWeapon;
+    [SerializeField] Image _barRateOfFireWeapon;
+    [SerializeField] Image _barAccuracyWeapon;
+    [SerializeField] Text _nameWeapon;
 
     GameObject _gunCurrent;
 
@@ -15,24 +15,24 @@ public class RightTopRightUiShop : Singleton<RightTopRightUiShop>
     protected override void Awake()
     {
         base.Awake();
-        CreateGun(0);
+        CreateGun(2);
     }
     public void ChangePropertiesGun(float newDamage, float newRateOfFire, float newAccuracy, string nameGun, int idGun)
     {
-        _barDamageGun.fillAmount = newDamage;
-        _barRateOfFireGun.fillAmount = newRateOfFire;
-        _barAccuracyGun.fillAmount = newAccuracy;
-        _nameGun.text = nameGun;
+        _barDamageWeapon.fillAmount = newDamage;
+        _barRateOfFireWeapon.fillAmount = newRateOfFire;
+        _barAccuracyWeapon.fillAmount = newAccuracy;
+        _nameWeapon.text = nameGun;
         CreateGun(idGun);
     }
-    void CreateGun(int idGun)
+    public void CreateGun(int idGun)
     {
         if (_gunCurrent != null)
         {
             Destroy(_gunCurrent);
         }
         string nameGunInAsset = "Gun_" + idGun;
-        GameObject _newGun = Instantiate(Resources.Load("ShopeGun/" + nameGunInAsset, typeof(GameObject)), _positionGun, Quaternion.identity) as GameObject;
+        GameObject _newGun = Instantiate(Resources.Load("ShopeGun/Weapon/Gun/" + nameGunInAsset, typeof(GameObject)), _positionGun, Quaternion.identity) as GameObject;
         _gunCurrent = _newGun;
     }
     public void SetActiveGunCurrent(bool result)

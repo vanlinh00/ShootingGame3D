@@ -7,29 +7,53 @@ public class ElementUiShop : MonoBehaviour
 {
     public int id;
     public Image _backGround;
-    public Gun _gun;
-    public Text _textnameGun;
-    public Button _btSelectGun;
+    public Weapon _weapon;
+    public Image _weaponImage;
+    public Text _textnameWeapon;
+    public Button _btSelectWeapon;
     public GameObject _darkBackGround;
     public GameObject _lock;
     private void Awake()
     {
-        _btSelectGun.onClick.AddListener(SelectGun);
+        _btSelectWeapon.onClick.AddListener(SelectWeapon);
+
     }
     private void OnValidate()
     {
         _backGround = this.gameObject.transform.GetChild(0).GetComponent<Image>();
-        _gun = GetComponentInChildren<Gun>();
-        _btSelectGun = GetComponent<Button>();
-        _textnameGun = this.gameObject.transform.GetChild(1).GetComponent<Text>();
+        _weapon = GetComponentInChildren<Weapon>();
+
+        _weaponImage = this.gameObject.transform.GetChild(2).GetComponent<Image>();
+        _btSelectWeapon = GetComponent<Button>();
+
+        _textnameWeapon = this.gameObject.transform.GetChild(1).GetComponent<Text>();
         _darkBackGround = this.gameObject.transform.GetChild(3).gameObject;
+
         _lock = this.gameObject.transform.GetChild(5).gameObject;
 
     }
-    public void SelectGun()
+    public void IsLock()
+    {
+        _darkBackGround.SetActive(true);
+        _lock.SetActive(true);
+    }
+    public void IsButtonGun()
+    {
+        // _weaponImage.
+    }
+    public void IsButtonKnive()
+    {
+        // _weaponImage.
+    }
+    public void IsButtonKPan()
+    {
+        // _weaponImage. load pans image
+    }
+    public void SelectWeapon()
     {
         // _backGround.color = new Color32(255, 25, 43, 225);
-        RightTopRightUiShop.instance.ChangePropertiesGun(_gun.damage, _gun.rateOfFire, _gun.accuracy, _gun.name, _gun.id);
+        RightTopRightUiShop.instance.ChangePropertiesGun(_weapon.damage, _weapon.rateOfFire, _weapon.accuracy, _weapon.name, _weapon.id);
     }
+
 }
 
