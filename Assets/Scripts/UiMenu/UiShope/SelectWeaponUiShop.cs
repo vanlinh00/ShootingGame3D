@@ -22,19 +22,21 @@ public class SelectWeaponUiShop : Singleton<SelectWeaponUiShop>
     {
         return idWeaPonDisplay;
     }
-
-    public void testc()
-    {
-        _content.transform.GetChild(0).GetComponent<ElementUiShop>().SelectWeapon();
-        Debug.Log(_content.transform.GetChild(0).GetComponent<ElementUiShop>()._textnameWeapon.text.ToString());
-    }
-    // lam sao de no doi mot ham thuc thi trong bao nhieu day nhi
     public void OpenStoreWeapon(int idChooseWeaPon)
+    {
+
+        StartCoroutine(ExampleCoroutine(idChooseWeaPon));
+    }
+
+    IEnumerator ExampleCoroutine(int idChooseWeaPon)
     {
         idWeaPonDisplay = idChooseWeaPon;
         SetData(idWeaPonDisplay, allWeapon, allWeaponUnlock);
         LoadWeaponUiShop.instance.CreateWeapon(0);
 
+        yield return new WaitForSeconds(0.1f);
+
+        _content.transform.GetChild(0).GetComponent<ElementUiShop>().SelectWeapon();
     }
 
     // chosse = 1 create list guns

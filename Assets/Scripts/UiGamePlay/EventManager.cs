@@ -5,5 +5,6 @@ using UnityEngine.Events;
 public static class EventManager
 {
     public static event UnityAction EnemyDeath;
+    // public static event UnityAction Enemy
     public static void OnEnemyDeath() => EnemyDeath?.Invoke();
 }

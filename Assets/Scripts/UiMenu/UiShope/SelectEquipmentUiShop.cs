@@ -12,12 +12,11 @@ public class SelectEquipmentUiShop : MonoBehaviour
         _primaryButton.onClick.AddListener(OpenShopGun);
         _knivesButton.onClick.AddListener(OpenShopKnives);
         _pansButton.onClick.AddListener(OpenpansButton);
-        // _pans.onClick.AddListener()
     }
 
     void OpenpansButton()
     {
-        SelectWeaponUiShop.instance.testc();
+
     }
     void OpenShopGun()
     {
@@ -26,10 +25,5 @@ public class SelectEquipmentUiShop : MonoBehaviour
     void OpenShopKnives()
     {
         SelectWeaponUiShop.instance.OpenStoreWeapon(2);
-    }
-
-    void Update()
-    {
-
     }
 }
