@@ -13,6 +13,7 @@ public class ElementUiShop : MonoBehaviour
     public Button _btSelectWeapon;
     public GameObject _darkBackGround;
     public GameObject _lock;
+
     private void Awake()
     {
         _btSelectWeapon.onClick.AddListener(SelectWeapon);
@@ -37,13 +38,13 @@ public class ElementUiShop : MonoBehaviour
         _darkBackGround.SetActive(true);
         _lock.SetActive(true);
     }
-    public void IsButtonGun()
+    public void IsButtonGun(int idImage)
     {
-        // _weaponImage.
+        _weaponImage.sprite = Resources.Load<Sprite>("ShopeGun/Weapon/Image/Gun/" + idImage);
     }
-    public void IsButtonKnive()
+    public void IsButtonKnive(int idImage)
     {
-        // _weaponImage.
+        _weaponImage.sprite = Resources.Load<Sprite>("ShopeGun/Weapon/Image/Knives/" + idImage);
     }
     public void IsButtonKPan()
     {
@@ -51,8 +52,9 @@ public class ElementUiShop : MonoBehaviour
     }
     public void SelectWeapon()
     {
+
         // _backGround.color = new Color32(255, 25, 43, 225);
-        RightTopRightUiShop.instance.ChangePropertiesGun(_weapon.damage, _weapon.rateOfFire, _weapon.accuracy, _weapon.name, _weapon.id);
+        LoadWeaponUiShop.instance.ChangePropertiesGun(_weapon.damage, _weapon.rateOfFire, _weapon.accuracy, _weapon.name, _weapon.id);
     }
 
 }

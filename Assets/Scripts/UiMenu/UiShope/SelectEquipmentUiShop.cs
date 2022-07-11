@@ -18,11 +18,11 @@ public class SelectEquipmentUiShop : MonoBehaviour
     }
     void OpenShopGun()
     {
-        Debug.Log("OpenShopGun");
+        SelectGunUiShop.instance.OpenStoreWeapon(1);
     }
     void OpenShopKnives()
     {
-        Debug.Log("OpenShopKnives");
+        SelectGunUiShop.instance.OpenStoreWeapon(2);
     }
     // Update is called once per frame
     void Update()

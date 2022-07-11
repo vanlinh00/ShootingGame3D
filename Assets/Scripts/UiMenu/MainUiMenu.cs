@@ -25,7 +25,7 @@ public class MainUiMenu : Singleton<MainUiMenu>
         SoundManager.instance.OnPlayAudio(SoundType.ButtonBlip);
         CavasControllerUiMenu.Instance.SetActivePlayer(false);
         CavasControllerUiMenu.Instance.SetActiveShopUi(true);
-        RightTopRightUiShop.instance.SetActiveGunCurrent(true);
+        LoadWeaponUiShop.instance.SetActiveGunCurrent(true);
         SetAnimator("OutMain");
 
     }
