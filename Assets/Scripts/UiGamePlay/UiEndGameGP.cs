@@ -14,17 +14,6 @@ public class UiEndGameGP : MonoBehaviour
         instance = this;
         _btEndgame.onClick.AddListener(RestartGame);
     }
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void EndGame(string res)
     {
         Screen.lockCursor = false;
@@ -34,7 +23,6 @@ public class UiEndGameGP : MonoBehaviour
 
     public void RestartGame()
     {
-        // networkIdentity.GetSocket().Emit("disconnect", "hi");  // for game online
         SceneManager.LoadScene(0);
     }
 }

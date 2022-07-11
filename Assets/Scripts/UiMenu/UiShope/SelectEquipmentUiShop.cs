@@ -6,25 +6,28 @@ public class SelectEquipmentUiShop : MonoBehaviour
 {
     [SerializeField] Button _primaryButton;
     [SerializeField] Button _knivesButton;
+    [SerializeField] Button _pansButton;
     private void Awake()
     {
         _primaryButton.onClick.AddListener(OpenShopGun);
         _knivesButton.onClick.AddListener(OpenShopKnives);
+        _pansButton.onClick.AddListener(OpenpansButton);
+        // _pans.onClick.AddListener()
     }
 
-    void Start()
+    void OpenpansButton()
     {
-
+        SelectWeaponUiShop.instance.testc();
     }
     void OpenShopGun()
     {
-        SelectGunUiShop.instance.OpenStoreWeapon(1);
+        SelectWeaponUiShop.instance.OpenStoreWeapon(1);
     }
     void OpenShopKnives()
     {
-        SelectGunUiShop.instance.OpenStoreWeapon(2);
+        SelectWeaponUiShop.instance.OpenStoreWeapon(2);
     }
-    // Update is called once per frame
+
     void Update()
     {
 

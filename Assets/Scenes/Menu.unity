@@ -7594,6 +7594,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _primaryButton: {fileID: 187745649}
   _knivesButton: {fileID: 530765878}
+  _pansButton: {fileID: 21794926}
 --- !u!1 &1009956909
 GameObject:
   m_ObjectHideFlags: 0
@@ -20070,7 +20071,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &1894971959533284796
 Animator:
   serializedVersion: 3
