@@ -3,20 +3,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet : MonoBehaviour, ImoveBulletable
 {
     public Vector3 _firePoint { get; set; }
-    public int _posPlayerShooting { get; set; }
+
+    private float speed = 2f;
+
     private void Update()
     {
-        transform.position = Vector3.Lerp(transform.position, _firePoint, 2f * Time.timeScale);
+
+    }
+    private void Start()
+    {
+
+    }
+    public void Move()
+    {
+        transform.position = Vector3.Lerp(transform.position, _firePoint, speed * Time.timeScale);
+        // throw new System.NotImplementedException();
     }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag.Equals("Enemy") || collision.gameObject.tag.Equals("Player"))
         {
-            GameObject _particleBullet = Instantiate(Resources.Load("ParticleBullet", typeof(GameObject)), _firePoint, Quaternion.identity) as GameObject;
-            _particleBullet.transform.parent = collision.gameObject.transform;
+            // GameObject _particleBullet = Instantiate(Resources.Load("ParticleBullet", typeof(GameObject)), _firePoint, Quaternion.identity) as GameObject;
+            //   _particleBullet.transform.parent = collision.gameObject.transform;
 
             // cach 1 dung ke thua
             //if (collision.gameObject.tag.Equals("Enemy"))
@@ -34,12 +45,14 @@ public class Bullet : MonoBehaviour
             {
                 Damage.Damage();
             }
-            Destroy(_particleBullet, 2f);
-            Destroy(this.gameObject);
+            // Destroy(_particleBullet, 2f);
+            // Destroy(this.gameObject);
         }
         else
         {
-            Destroy(this.gameObject);
+            // Destroy(this.gameObject);
         }
     }
+
+
 }

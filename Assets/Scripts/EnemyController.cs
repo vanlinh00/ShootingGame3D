@@ -46,7 +46,7 @@ public class EnemyController : BasePlayerController, IDamageable
                 if (shootTime < 0)
                 {
                     Playershoot();
-                    EnemyShooting(EnemyManager.instance._listEnemy[pos].gameObject.transform.position);
+                    Shooting(EnemyManager.instance._listEnemy[pos].gameObject.transform.position);
                     shootTime = shootTimeOld;
                 }
             }
@@ -90,12 +90,12 @@ public class EnemyController : BasePlayerController, IDamageable
             if (shootTime < 0)
             {
                 Playershoot();
-                EnemyShooting(_moveToPlayer.position);
+                Shooting(_moveToPlayer.position);
                 shootTime = shootTimeOld;
             }
         }
     }
-    public void EnemyShooting(Vector3 positionPlayer)
+    protected override void Shooting(Vector3 positionPlayer)
     {
         float yRandom = Random.RandomRange(-4, 4);
 
@@ -104,7 +104,7 @@ public class EnemyController : BasePlayerController, IDamageable
         target.x = positionPlayer.x;
         target.y = positionPlayer.y + yRandom;
         target.z = positionPlayer.z;
-        Shooting(target);
+        base.Shooting(target);
     }
     private void OnCollisionEnter(Collision collision)
     {

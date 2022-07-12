@@ -14,10 +14,7 @@ public class BasePlayerController : MonoBehaviour
 
     [SerializeField]
     public Image _healthBar;
-    void Update()
-    {
 
-    }
     public void PlayerRun()
     {
         _animator.SetBool("shoot", false);
@@ -55,13 +52,15 @@ public class BasePlayerController : MonoBehaviour
         }
 
     }
-    protected void Shooting(Vector3 _shootPoint)
+    protected virtual void Shooting(Vector3 _shootPoint)
     {
-        GameObject _newBullet = Instantiate(Resources.Load("Bullet", typeof(GameObject)), _posGun.position, _posGun.rotation) as GameObject;
-        GameObject _vFX_M4 = Instantiate(Resources.Load("VFX_M4", typeof(GameObject)), _posGun.position, _posGun.rotation) as GameObject;
-        _newBullet.GetComponent<Bullet>()._firePoint = _shootPoint;
-        Destroy(_newBullet, 0.1f);
-        Destroy(_vFX_M4, 1);
+        ObjectPooler.Instance.SpawnFromPool("Bullet", _posGun.position, _posGun.rotation, _shootPoint);
+
+        //GameObject _newBullet = Instantiate(Resources.Load("Bullet", typeof(GameObject)), _posGun.position, _posGun.rotation) as GameObject;
+        //GameObject _vFX_M4 = Instantiate(Resources.Load("VFX_M4", typeof(GameObject)), _posGun.position, _posGun.rotation) as GameObject;
+        //_newBullet.GetComponent<Bullet>()._firePoint = _shootPoint;
+        //Destroy(_newBullet, 0.1f);
+        //Destroy(_vFX_M4, 1);
     }
 
     // co the dung ke thua vi enemy va player deu giong nhau, nhung nen dung interface vi tuong lai se co nhieu thu phai damage vd nhu cai thung
