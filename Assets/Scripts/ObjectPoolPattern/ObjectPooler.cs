@@ -32,6 +32,7 @@ public class ObjectPooler : MonoBehaviour
             for (int i = 0; i < pool.size; i++)
             {
                 GameObject obj = Instantiate(pool.prefab);
+                obj.transform.parent = this.transform;
                 obj.SetActive(false);
                 queueObjectPool.Enqueue(obj);
             }
@@ -48,6 +49,7 @@ public class ObjectPooler : MonoBehaviour
         }
 
         GameObject objectToSpawn = poolDictionary[tag].Dequeue();
+
         objectToSpawn.SetActive(true);
 
         objectToSpawn.transform.position = position;

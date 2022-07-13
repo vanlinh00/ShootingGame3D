@@ -12,6 +12,7 @@ public class EnemyController : BasePlayerController, IDamageable
 
     [SerializeField] Transform _moveToPlayer;
 
+
     [SerializeField] CharacterController _characterController;
 
     private int randomPosition;
@@ -129,9 +130,25 @@ public class EnemyController : BasePlayerController, IDamageable
         health -= 1000;
         if (health <= 0)
         {
-            EventManager.OnEnemyDeath();
-            Destroy(this.gameObject);
+            List<GameObject> listObjectBlood = new List<GameObject>();
 
+            int arrayCount = _positionOfParticleBlood.childCount;
+
+            for (int i = 0; i < arrayCount; i++)
+            {
+                listObjectBlood.Add(_positionOfParticleBlood.GetChild(i).gameObject);
+            }
+            foreach (GameObject index in listObjectBlood)
+            {
+                index.transform.parent = ObjectPooler.Instance.transform;
+            }
+
+            if (_positionOfParticleBlood.childCount == 0)
+            {
+                EventManager.OnEnemyDeath();
+                Destroy(this.gameObject);
+            }
         }
+
     }
 }

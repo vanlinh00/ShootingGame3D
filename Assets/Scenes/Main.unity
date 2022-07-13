@@ -17358,6 +17358,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 429508, guid: 9c74caa742791864f9c678287121e6c9, type: 3}
   m_PrefabInstance: {fileID: 1738856110}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1279016162
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1279016163}
+  m_Layer: 8
+  m_Name: ParticleBlood
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1279016163
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1279016162}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1526543240467724466}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1279697125 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 442488, guid: ec78ebca7517fb745a45a931cb06d2bd, type: 3}
@@ -21781,7 +21811,7 @@ MonoBehaviour:
     size: 300
   - tag: ParticleBlood
     prefab: {fileID: 1924232530144211869, guid: 54a26166880bd9a4cb7ea738499d1d47, type: 3}
-    size: 100
+    size: 30
   - tag: VFX_M4
     prefab: {fileID: 9119710931878160845, guid: 4630dffb7ec8bce45b2c4f76f7f4fa16, type: 3}
     size: 100
@@ -29494,6 +29524,7 @@ Transform:
   - {fileID: 5486894916265491552}
   - {fileID: 2369246711833364011}
   - {fileID: 1266865613}
+  - {fileID: 1279016163}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -29850,6 +29881,7 @@ MonoBehaviour:
   _animator: {fileID: 2690864041612428386}
   _posGun: {fileID: 2533446928831308772}
   _healthBar: {fileID: 4310903668621359858}
+  _positionOfParticleBlood: {fileID: 1279016163}
   _characterController: {fileID: 2190031800119222786}
   speed: 1.3
   MoveSpeed: 4.31

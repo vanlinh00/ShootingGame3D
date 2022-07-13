@@ -16,6 +16,8 @@ public class BasePlayerController : MonoBehaviour
     [SerializeField]
     public Image _healthBar;
 
+    [SerializeField] protected Transform _positionOfParticleBlood;
+
     public void PlayerRun()
     {
         _animator.SetBool("shoot", false);
@@ -82,9 +84,11 @@ public class BasePlayerController : MonoBehaviour
     }
     protected virtual void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag.Equals("Bullet"))
+        if (collision.gameObject.tag.Equals("Bullet") && health > 0)
         {
+
             StartCoroutine(ParticleBloodCoroutine(collision.gameObject.GetComponent<Bullet>()._firePoint));
+
         }
     }
     IEnumerator ParticleBloodCoroutine(Vector3 _firePoint)
@@ -92,8 +96,8 @@ public class BasePlayerController : MonoBehaviour
 
         GameObject particleBlood = ObjectPooler.Instance.SpawnFromPool("ParticleBlood", _firePoint, Quaternion.identity);
 
-        // Blood move Player ou Enemy
-        particleBlood.transform.DOMove(transform.position, 1000f);
+        particleBlood.transform.parent = _positionOfParticleBlood;
+
 
         yield return new WaitForSeconds(1);
 
