@@ -21778,6 +21778,12 @@ MonoBehaviour:
   pools:
   - tag: Bullet
     prefab: {fileID: 1970834773247655737, guid: ce21de78f31aeb04cb22ad0b29987d1c, type: 3}
+    size: 300
+  - tag: ParticleBlood
+    prefab: {fileID: 1924232530144211869, guid: 54a26166880bd9a4cb7ea738499d1d47, type: 3}
+    size: 100
+  - tag: VFX_M4
+    prefab: {fileID: 9119710931878160845, guid: 4630dffb7ec8bce45b2c4f76f7f4fa16, type: 3}
     size: 100
 --- !u!4 &1645425501 stripped
 Transform:

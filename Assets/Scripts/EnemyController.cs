@@ -106,10 +106,11 @@ public class EnemyController : BasePlayerController, IDamageable
         target.z = positionPlayer.z;
         base.Shooting(target);
     }
-    private void OnCollisionEnter(Collision collision)
+    protected override void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag.Equals("Bullet"))
         {
+            base.OnCollisionEnter(collision);
             EnemyMove();
         }
     }

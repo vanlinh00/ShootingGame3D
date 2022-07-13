@@ -61,25 +61,6 @@ public class EnemyManager : MonoBehaviour
         BornAllEnemy();
     }
 
-    //public Dictionary<int, float> CheckDistanceAllEnemy(Transform transformPlayer)
-    //{
-    //    Dictionary<int, float> DictDistanceAllEnemy = new Dictionary<int, float>();
-
-    //    for (int i = 0; i < _listEnemy.Count; i++)
-    //    {
-    //        float disTance2Player = Vector3.Distance(transformPlayer.position, _listEnemy[i].transform.position);
-    //        DictDistanceAllEnemy.Add(i, disTance2Player);
-    //    }
-    //    var sortedDict = from entry in DictDistanceAllEnemy orderby entry.Value ascending select entry;
-    //    DictDistanceAllEnemy = (Dictionary<int, float>)sortedDict;
-
-    //    foreach (var kvp in DictDistanceAllEnemy)
-    //    {
-    //        Debug.Log("key" + kvp.Key + "value" + kvp.Value);
-    //    }
-    //    //  Console.WriteLine("Key: {0}, Value: {1}", kvp.Key, kvp.Value);
-    //    return DictDistanceAllEnemy;
-    //}
     public int[,] CheckMinMaxDistanceEnemy(Transform transformPlayer)
     {
         RemoveGameObjectNull();

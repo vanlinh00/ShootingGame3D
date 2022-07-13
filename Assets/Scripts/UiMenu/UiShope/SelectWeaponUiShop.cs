@@ -25,10 +25,10 @@ public class SelectWeaponUiShop : Singleton<SelectWeaponUiShop>
     public void OpenStoreWeapon(int idChooseWeaPon)
     {
 
-        StartCoroutine(ExampleCoroutine(idChooseWeaPon));
+        StartCoroutine(OpenStoreWeaponCoroutine(idChooseWeaPon));
     }
 
-    IEnumerator ExampleCoroutine(int idChooseWeaPon)
+    IEnumerator OpenStoreWeaponCoroutine(int idChooseWeaPon)
     {
         idWeaPonDisplay = idChooseWeaPon;
         SetData(idWeaPonDisplay, allWeapon, allWeaponUnlock);

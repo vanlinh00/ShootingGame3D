@@ -39,7 +39,7 @@ public class ObjectPooler : MonoBehaviour
         }
     }
 
-    public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation, Vector3 firePoint)
+    public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation)
     {
         if (!poolDictionary.ContainsKey(tag))
         {
@@ -52,16 +52,11 @@ public class ObjectPooler : MonoBehaviour
 
         objectToSpawn.transform.position = position;
         objectToSpawn.transform.rotation = rotation;
-        objectToSpawn.GetComponent<Bullet>()._firePoint = firePoint;
 
-        ImoveBulletable imoveBullet = objectToSpawn.GetComponent<ImoveBulletable>();
-        imoveBullet.Move();
         poolDictionary[tag].Enqueue(objectToSpawn);
-
 
         return objectToSpawn;
     }
-    // Update is called once per frame
     void Update()
     {
 
