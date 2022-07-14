@@ -72,9 +72,8 @@ public class BasePlayerController : MonoBehaviour
         Bullet.GetComponent<Bullet>()._firePoint = _shootPoint;
 
         GameObject _vFX_M4 = ObjectPooler.Instance.SpawnFromPool("VFX_M4", _posGun.position, _posGun.rotation);
-
-
         ImoveBulletable moveBullet = Bullet.GetComponent<ImoveBulletable>();
+
         moveBullet.Move();
 
         yield return new WaitForSeconds(0.009f);
@@ -95,9 +94,7 @@ public class BasePlayerController : MonoBehaviour
     {
 
         GameObject particleBlood = ObjectPooler.Instance.SpawnFromPool("ParticleBlood", _firePoint, Quaternion.identity);
-
         particleBlood.transform.parent = _positionOfParticleBlood;
-
 
         yield return new WaitForSeconds(1);
 

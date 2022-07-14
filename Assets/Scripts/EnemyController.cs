@@ -109,7 +109,7 @@ public class EnemyController : BasePlayerController, IDamageable
     }
     protected override void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag.Equals("Bullet"))
+        if (collision.gameObject.tag.Equals("Bullet") && health > 0)
         {
             base.OnCollisionEnter(collision);
             EnemyMove();

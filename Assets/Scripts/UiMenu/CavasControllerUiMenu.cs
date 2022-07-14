@@ -7,10 +7,10 @@ using UnityEngine.SceneManagement;
 public class CavasControllerUiMenu : MonoBehaviour
 {
     public static CavasControllerUiMenu Instance;
+
     [SerializeField] GameObject _mainUi;
     [SerializeField] GameObject _shopUi;
     [SerializeField] GameObject _rankUi;
-
     [SerializeField] GameObject _player;
 
     private void Awake()
@@ -19,7 +19,7 @@ public class CavasControllerUiMenu : MonoBehaviour
     }
     void Start()
     {
-        // MusicManager.instance.OnPlayMusic(MusicType.MainMenu);
+        MusicManager.instance.OnPlayMusic(MusicType.MainMenu);
     }
     void Update()
     {

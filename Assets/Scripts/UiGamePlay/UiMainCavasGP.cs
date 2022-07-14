@@ -30,10 +30,10 @@ public class UiMainCavasGP : Singleton<UiMainCavasGP>
     {
         EventManager.EnemyDeath += EventManagerOnEnemyDeath;
     }
-    private void OnDisable()
-    {
-        EventManager.EnemyDeath -= EventManagerOnEnemyDeath;
-    }
+    //private void OnDisable()
+    //{
+    //    EventManager.EnemyDeath -= EventManagerOnEnemyDeath;
+    //}
     private void EventManagerOnEnemyDeath()
     {
         _totalEnemyCurrent--;
