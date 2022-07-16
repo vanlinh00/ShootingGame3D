@@ -5109,7 +5109,6 @@ GameObject:
   - component: {fileID: 595977210}
   - component: {fileID: 595977209}
   - component: {fileID: 595977208}
-  - component: {fileID: 595977211}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5182,18 +5181,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &595977211
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 595977207}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2be74ec424154046b5d8683c263cf39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &596338495
 GameObject:
   m_ObjectHideFlags: 0
@@ -16216,6 +16203,7 @@ GameObject:
   - component: {fileID: 213587504817565631}
   - component: {fileID: 213587504817565625}
   - component: {fileID: 213587504817565624}
+  - component: {fileID: 213587504817565632}
   m_Layer: 5
   m_Name: user_infor
   m_TagString: Untagged
@@ -16246,6 +16234,22 @@ RectTransform:
   m_AnchoredPosition: {x: 176, y: 381}
   m_SizeDelta: {x: 467.5023, y: 182.618}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &213587504817565632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 213587504817565630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dc578869713637448aba5cd80bad96e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _avatarImage: {fileID: 213587505899638545}
+  _nameText: {fileID: 213587505809250964}
+  _rankingText: {fileID: 213587504115811929}
+  _levelText: {fileID: 213587504963156634}
 --- !u!114 &213587504895524496
 MonoBehaviour:
   m_ObjectHideFlags: 0

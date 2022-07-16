@@ -5,18 +5,25 @@ using System.Linq;
 public class EnemyManager : MonoBehaviour
 {
     public static EnemyManager instance;
-    [SerializeField]
-    public List<GameObject> _listPoint;
+
+    [SerializeField] public List<GameObject> _listPoint;
 
     [SerializeField] GameObject _allPositionEnemy;
 
     public List<int> _listDestinationEnemy = new List<int>();
+
     public List<GameObject> _listEnemy = new List<GameObject>();
 
+    //public Dictionary<string, GameObject> _listEnemeyDictionary;  // ideal don't destroy gameobject enemy , just setActive(false)
+
     public bool _isCreateAllEnemy = false;
+
+
     private void Awake()
     {
         instance = this;
+        // _listEnemeyDictionary = new Dictionary<string, GameObject>();
+
         SetListEnemy(true);
     }
 
@@ -25,13 +32,16 @@ public class EnemyManager : MonoBehaviour
         for (int i = 0; i < _listPoint.Count; i++)
         {
             GameObject _newEnemy = Instantiate(Resources.Load("Enemy", typeof(GameObject)), _listPoint[i].transform.position /*new Vector3(-71.1f, 0, 0)*/, Quaternion.identity) as GameObject;
+
             _newEnemy.transform.parent = _allPositionEnemy.transform;
+
             _listEnemy.Add(_newEnemy);
-            _newEnemy.GetComponent<EnemyController>().addRandomPosition(ranDomDestinationOfEnemy());
+
+            _newEnemy.GetComponent<EnemyController>().RandomPosition(RanDomDestinationOfEnemy());
         }
         _isCreateAllEnemy = true;
     }
-    public int ranDomDestinationOfEnemy()
+    public int RanDomDestinationOfEnemy()
     {
         int RandomPosition = -1;
         do

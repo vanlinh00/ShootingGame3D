@@ -19,6 +19,7 @@ public class CavasControllerUiMenu : MonoBehaviour
     }
     void Start()
     {
+        DataPlayer a = new DataPlayer();
         MusicManager.instance.OnPlayMusic(MusicType.MainMenu);
     }
     void Update()

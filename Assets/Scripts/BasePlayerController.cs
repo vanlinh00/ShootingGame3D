@@ -39,15 +39,15 @@ public class BasePlayerController : MonoBehaviour
         switch (a)
         {
             case 0:
-                Debug.Log("idle");
+               // Debug.Log("idle");
                 PlayerIdle();
                 break;
             case 1:
-                Debug.Log("run");
+               // Debug.Log("run");
                 PlayerRun();
                 break;
             case 2:
-                Debug.Log("shoot");
+               // Debug.Log("shoot");
                 Playershoot();
                 break;
             default:

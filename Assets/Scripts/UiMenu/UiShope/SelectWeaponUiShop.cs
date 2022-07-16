@@ -57,7 +57,7 @@ public class SelectWeaponUiShop : Singleton<SelectWeaponUiShop>
     void CreateListGuns(int i, int allWeaponUnlock, int choose)
     {
         GameObject newButtonWeapon = Instantiate(Resources.Load("ShopeGun/Weapon/shop_button_element", typeof(GameObject)), _content.transform.position, Quaternion.identity) as GameObject;
-        newButtonWeapon.transform.parent = _content.transform;
+        newButtonWeapon.transform.SetParent(_content.transform);
 
         float randomDamge = Random.RandomRange(0.2f, 1f);
         float randomrateOfFire = Random.RandomRange(0.2f, 1f);

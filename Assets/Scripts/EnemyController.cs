@@ -10,8 +10,7 @@ public class EnemyController : BasePlayerController, IDamageable
 {
     [SerializeField] float speed;
 
-    [SerializeField] Transform _moveToPlayer;
-
+    [SerializeField] Transform _positionPlayer;
 
     [SerializeField] CharacterController _characterController;
 
@@ -24,11 +23,11 @@ public class EnemyController : BasePlayerController, IDamageable
     }
     private void Start()
     {
-        _moveToPlayer = GameObject.Find("Player").transform;
+        _positionPlayer = GameObject.Find("Player").transform;
     }
     private void FixedUpdate()
     {
-        float distanceEtoPlayer = Vector3.Distance(transform.position, _moveToPlayer.position);
+        float distanceEtoPlayer = Vector3.Distance(transform.position, _positionPlayer.position);
         float distanceEtoDestation = Vector3.Distance(transform.position, EnemyManager.instance._listPoint[randomPosition].transform.position);
 
         if (distanceEtoPlayer < 55f && (distanceEtoDestation > 2 * distanceEtoPlayer) || distanceEtoPlayer < 40f)
@@ -59,7 +58,7 @@ public class EnemyController : BasePlayerController, IDamageable
             // MoveToPoint((GameController.instance._listPoint[randomPosition].transform.position));
         }
     }
-    public void addRandomPosition(int a)
+    public void RandomPosition(int a)
     {
         randomPosition = a;
     }
@@ -67,7 +66,7 @@ public class EnemyController : BasePlayerController, IDamageable
     {
         if ((Vector3.Distance(transform.position, target)) <= 20f)
         {
-            randomPosition = EnemyManager.instance.ranDomDestinationOfEnemy();
+            randomPosition = EnemyManager.instance.RanDomDestinationOfEnemy();
         }
         else
         {
@@ -78,12 +77,12 @@ public class EnemyController : BasePlayerController, IDamageable
     }
     void MoveToPlayer(float distance)
     {
-        transform.LookAt(_moveToPlayer.position);
+        transform.LookAt(_positionPlayer.position);
         if (distance > 33f)
         {
             PlayerRun();
             //  transform.position = Vector3.Lerp(transform.position, _moveToPlayer.position, speed * Time.deltaTime);
-            transform.Translate((_moveToPlayer.position - transform.position) * speed);
+            transform.Translate((_positionPlayer.position - transform.position) * speed);
         }
         else
         {
@@ -91,7 +90,7 @@ public class EnemyController : BasePlayerController, IDamageable
             if (shootTime < 0)
             {
                 Playershoot();
-                Shooting(_moveToPlayer.position);
+                Shooting(_positionPlayer.position);
                 shootTime = shootTimeOld;
             }
         }
@@ -130,25 +129,31 @@ public class EnemyController : BasePlayerController, IDamageable
         health -= 1000;
         if (health <= 0)
         {
-            List<GameObject> listObjectBlood = new List<GameObject>();
-
-            int arrayCount = _positionOfParticleBlood.childCount;
-
-            for (int i = 0; i < arrayCount; i++)
-            {
-                listObjectBlood.Add(_positionOfParticleBlood.GetChild(i).gameObject);
-            }
-            foreach (GameObject index in listObjectBlood)
-            {
-                index.transform.parent = ObjectPooler.Instance.transform;
-            }
-
-            if (_positionOfParticleBlood.childCount == 0)
-            {
-                EventManager.OnEnemyDeath();
-                Destroy(this.gameObject);
-            }
+            Died();
         }
 
     }
+    public void Died()
+    {
+        List<GameObject> listObjectBlood = new List<GameObject>();
+
+        int arrayCount = _positionOfParticleBlood.childCount;
+
+        for (int i = 0; i < arrayCount; i++)
+        {
+            listObjectBlood.Add(_positionOfParticleBlood.GetChild(i).gameObject);
+        }
+        foreach (GameObject index in listObjectBlood)
+        {
+            index.transform.parent = ObjectPooler.Instance.transform;
+        }
+
+        if (_positionOfParticleBlood.childCount == 0)
+        {
+            EventManager.OnEnemyDeath();
+            this.gameObject.SetActive(false);
+            // Destroy(this.gameObject);
+        }
+    }
+
 }

@@ -10,7 +10,6 @@ public class UiEndGameGP : MonoBehaviour
     [SerializeField] Button _btEndgame;
     private void Awake()
     {
-
         instance = this;
         _btEndgame.onClick.AddListener(RestartGame);
     }

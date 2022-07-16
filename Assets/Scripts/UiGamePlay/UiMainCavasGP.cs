@@ -41,6 +41,8 @@ public class UiMainCavasGP : Singleton<UiMainCavasGP>
         if (_totalEnemyCurrent <= 0)
         {
             UiControllerGP.instance.EndGame("YOU WIN");
+            DataPlayer.updataLevel();
+            InforUser.instance.ChangeInforUser();
         }
     }
     void Update()
