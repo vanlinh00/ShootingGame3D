@@ -2,7 +2,7 @@
 //using System.Collections.Generic;
 //using UnityEngine;
 
-//public class PlayerController : BasePlayerController
+//public class PlayerController : BaseCharacterController
 //{
 
 //    [SerializeField]
@@ -19,10 +19,6 @@
 
 //    Vector3 _shootPoint;
 
-//    void Start()
-//    {
-
-//    }
 //    private void Update()
 //    {
 //        MovePlayer();
@@ -46,14 +42,11 @@
 //        if (Input.GetKeyDown("q"))
 //        {
 //            CameraController.instance.PlayerSniperCult(true);
-//            UiController.instance.UiGun(false);
-//            UiController.instance.UiSniperCult(true);
+
 //        }
 //        else if (Input.GetKeyUp("q"))
 //        {
 //            CameraController.instance.PlayerSniperCult(false);
-//            UiController.instance.UiGun(true);
-//            UiController.instance.UiSniperCult(false);
 //            PlayerIdle();
 //        }
 //        if (Input.GetMouseButtonDown(0))
@@ -84,3 +77,4 @@
 
 
 //}
+

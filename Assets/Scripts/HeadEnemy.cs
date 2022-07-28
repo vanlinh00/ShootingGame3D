@@ -11,4 +11,5 @@ public class HeadEnemy : MonoBehaviour
             Debug.Log("head shoot");
         }
     }
+
 }

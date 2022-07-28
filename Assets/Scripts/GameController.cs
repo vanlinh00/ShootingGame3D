@@ -9,13 +9,4 @@ public class GameController : Singleton<GameController>
         base.Awake();
         Cursor.visible = false;
     }
-    public void Start()
-    {
-
-
-    }
-    void Update()
-    {
-
-    }
 }

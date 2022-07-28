@@ -8,17 +8,9 @@ public class Bullet : MonoBehaviour, ImoveBulletable
     public Vector3 _firePoint { get; set; }
 
     private float speed = 2f;
-
-    private void Update()
-    {
-
-    }
-    private void Start()
-    {
-
-    }
     public void Move()
     {
+        SoundManager.instance.OnPlayAudio(SoundType.AKFire);
         transform.position = Vector3.Lerp(transform.position, _firePoint, speed * Time.timeScale);
     }
     private void OnCollisionEnter(Collision collision)

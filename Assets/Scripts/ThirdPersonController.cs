@@ -13,7 +13,7 @@ namespace StarterAssets
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
     [RequireComponent(typeof(PlayerInput))]
 #endif
-    public class ThirdPersonController : BasePlayerController, IDamageable
+    public class ThirdPersonController : BaseCharacterController, IDamageable
     {
         /// gap code
 
@@ -445,7 +445,6 @@ namespace StarterAssets
             }
             if (Input.GetMouseButtonDown(0))
             {
-                SoundManager.instance.OnPlayAudio(SoundType.AKFire);
                 UiScopeGP.instance.setAniGunShooting(true);
                 Shooting(_shootPoint);
             }

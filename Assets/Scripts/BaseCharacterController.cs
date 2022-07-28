@@ -3,21 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
-public class BasePlayerController : MonoBehaviour
+public class BaseCharacterController : MonoBehaviour
 {
-    [SerializeField]
-    Animator _animator;
+    [SerializeField] Animator _animator;
 
-    [SerializeField]
-    Transform _posGun;
+    [SerializeField] Transform _posGun;
+
+    [SerializeField] GameObject _gun;
 
     protected int health = 10000;
 
-    [SerializeField]
-    public Image _healthBar;
+    [SerializeField] public Image _healthBar;
 
     [SerializeField] protected Transform _positionOfParticleBlood;
 
+    protected enum CharacterState
+    {
+        Run,
+        Shoot,
+        Idle,
+    }
     public void PlayerRun()
     {
         _animator.SetBool("shoot", false);
@@ -34,20 +39,20 @@ public class BasePlayerController : MonoBehaviour
         _animator.SetBool("run", false);
     }
 
-    public void AnimatorPlayer(int a)
+    protected void AnimatorPlayer(CharacterState state)
     {
-        switch (a)
+        switch (state)
         {
-            case 0:
-               // Debug.Log("idle");
+            case CharacterState.Idle:
+                // Debug.Log("idle");
                 PlayerIdle();
                 break;
-            case 1:
-               // Debug.Log("run");
+            case CharacterState.Run:
+                // Debug.Log("run");
                 PlayerRun();
                 break;
-            case 2:
-               // Debug.Log("shoot");
+            case CharacterState.Shoot:
+                // Debug.Log("shoot");
                 Playershoot();
                 break;
             default:
@@ -85,9 +90,7 @@ public class BasePlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Bullet") && health > 0)
         {
-
             StartCoroutine(ParticleBloodCoroutine(collision.gameObject.GetComponent<Bullet>()._firePoint));
-
         }
     }
     IEnumerator ParticleBloodCoroutine(Vector3 _firePoint)
