@@ -3,9 +3,8 @@
 - [Folder Structure](#cactus-folder-structure)
 - [Installation](#gear-installation)
 - [Technology](#rocket-technology)
+
 ## :pencil: About
-
-
 The **ShootingGame3D** a FPS GAME. this game consists of 20 people, the winner is the one who kills the most people. 
 
 ## :cactus: Folder Structure
