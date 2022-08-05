@@ -9,6 +9,9 @@ public class LoadWeaponUiShop : Singleton<LoadWeaponUiShop>
     [SerializeField] Image _barAccuracyWeapon;
     [SerializeField] Text _nameWeapon;
 
+    [SerializeField] Text _priceWeaponFCoinTxt;
+    [SerializeField] Text _priceWeaponFDiamondTxt;
+
     private GameObject _weaPonCurrent;
 
     Vector3 _positionGun = Vector3.zero;
@@ -16,12 +19,16 @@ public class LoadWeaponUiShop : Singleton<LoadWeaponUiShop>
     {
         base.Awake();
     }
-    public void ChangePropertiesGun(float newDamage, float newRateOfFire, float newAccuracy, string nameGun, int idWeapon)
+    public void ChangePropertiesGun(float newDamage, float newRateOfFire, float newAccuracy, string nameGun, int idWeapon, int priceForCoin, int priceForDiamond)
     {
         _barDamageWeapon.fillAmount = newDamage;
         _barRateOfFireWeapon.fillAmount = newRateOfFire;
         _barAccuracyWeapon.fillAmount = newAccuracy;
         _nameWeapon.text = nameGun;
+
+        _priceWeaponFCoinTxt.text = "Buy it for " + priceForCoin.ToString();
+        _priceWeaponFDiamondTxt.text = "Buy it for " + priceForDiamond.ToString();
+
         CreateWeapon(idWeapon);
     }
     public void CreateWeapon(int idWeapon)

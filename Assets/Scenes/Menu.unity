@@ -4646,18 +4646,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 524020548}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 662986636}
   - {fileID: 679739085}
-  m_Father: {fileID: 1530279895}
-  m_RootOrder: 0
+  m_Father: {fileID: 547127578}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -358.9, y: -60.515}
+  m_AnchoredPosition: {x: -331.63004, y: -457.51495}
   m_SizeDelta: {x: 406.697, y: 63.371}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &524020550
@@ -5076,6 +5076,8 @@ RectTransform:
   - {fileID: 3335329180553758299}
   - {fileID: 252036865}
   - {fileID: 1187577863}
+  - {fileID: 524020549}
+  - {fileID: 1667079709}
   m_Father: {fileID: 1914298125}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5100,6 +5102,8 @@ MonoBehaviour:
   _barRateOfFireWeapon: {fileID: 3335329179219244224}
   _barAccuracyWeapon: {fileID: 988027154}
   _nameWeapon: {fileID: 1187577864}
+  _priceWeaponFCoinTxt: {fileID: 184830909}
+  _priceWeaponFDiamondTxt: {fileID: 1559022862}
 --- !u!1 &570072460
 GameObject:
   m_ObjectHideFlags: 0
@@ -11041,7 +11045,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1530279895
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11052,9 +11056,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 524020549}
-  - {fileID: 1667079709}
+  m_Children: []
   m_Father: {fileID: 1914298125}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11657,18 +11659,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1667079708}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 608522083}
   - {fileID: 41883318}
-  m_Father: {fileID: 1530279895}
-  m_RootOrder: 1
+  m_Father: {fileID: 547127578}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 78.8, y: -60.515}
+  m_AnchoredPosition: {x: 106.06998, y: -457.51495}
   m_SizeDelta: {x: 406.697, y: 63.371}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1667079710

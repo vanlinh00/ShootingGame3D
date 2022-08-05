@@ -9,4 +9,6 @@ public class Weapon : MonoBehaviour
     public float damage { get; set; }
     public float rateOfFire { get; set; }
     public float accuracy { get; set; }
+    public int priceForCoin { get; set; }
+    public int priceForDiamond { get; set; }
 }

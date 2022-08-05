@@ -54,7 +54,7 @@ public class ElementUiShop : MonoBehaviour
     {
 
         // _backGround.color = new Color32(255, 25, 43, 225);
-        LoadWeaponUiShop.instance.ChangePropertiesGun(_weapon.damage, _weapon.rateOfFire, _weapon.accuracy, _weapon.name, _weapon.id);
+        LoadWeaponUiShop.instance.ChangePropertiesGun(_weapon.damage, _weapon.rateOfFire, _weapon.accuracy, _weapon.name, _weapon.id, _weapon.priceForCoin, _weapon.priceForDiamond);
     }
 
 }

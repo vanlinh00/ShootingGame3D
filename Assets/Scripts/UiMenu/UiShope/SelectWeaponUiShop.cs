@@ -62,11 +62,17 @@ public class SelectWeaponUiShop : Singleton<SelectWeaponUiShop>
         float randomDamge = Random.RandomRange(0.2f, 1f);
         float randomrateOfFire = Random.RandomRange(0.2f, 1f);
         float randomaccuracy = Random.RandomRange(0.2f, 1f);
+        int randomPriceForCoin = Random.RandomRange(200, 300);
+        int randomPriceForDiamond = Random.RandomRange(100, 150);
 
         newButtonWeapon.GetComponent<ElementUiShop>()._weapon.id = i;
         newButtonWeapon.GetComponent<ElementUiShop>()._weapon.damage = randomDamge;
         newButtonWeapon.GetComponent<ElementUiShop>()._weapon.rateOfFire = randomrateOfFire;
         newButtonWeapon.GetComponent<ElementUiShop>()._weapon.accuracy = randomaccuracy;
+        newButtonWeapon.GetComponent<ElementUiShop>()._weapon.priceForCoin = randomPriceForCoin;
+        newButtonWeapon.GetComponent<ElementUiShop>()._weapon.priceForDiamond = randomPriceForDiamond;
+
+
 
         switch (choose)
         {

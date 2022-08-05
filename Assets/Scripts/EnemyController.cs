@@ -15,11 +15,11 @@ public class EnemyController : BaseCharacterController, IDamageable
     [SerializeField] CharacterController _characterController;
 
     private int _randomPosition;
-    float _shootTime = 3f;
+    float _shootTime = 1f;
     float _shootTimeOld;
     private void Awake()
     {
-        _shootTimeOld = 3f;
+        _shootTimeOld = 1f;
     }
     private void Start()
     {
@@ -37,25 +37,25 @@ public class EnemyController : BaseCharacterController, IDamageable
         else
         {
             // 2 enemy shooting
-            //int minDistanceBetween2Enemy = EnemyManager.instance.CheckMinMaxDistanceEnemy(this.transform)[0, 1];
-            //if (minDistanceBetween2Enemy < 19f && minDistanceBetween2Enemy != 0)
-            //{
-            //    int pos = EnemyManager.instance.CheckMinMaxDistanceEnemy(this.transform)[0, 0];
+            int minDistanceBetween2Enemy = EnemyManager.instance.CheckMinMaxDistanceEnemy(this.transform)[0, 1];
+            if (minDistanceBetween2Enemy < 19f && minDistanceBetween2Enemy != 0)
+            {
+                int pos = EnemyManager.instance.CheckMinMaxDistanceEnemy(this.transform)[0, 0];
 
-            //    shootTime -= Time.deltaTime;
-            //    if (shootTime < 0)
-            //    {
-            //        Playershoot();
-            //        Shooting(EnemyManager.instance._listEnemy[pos].gameObject.transform.position);
-            //        shootTime = _shootTimeOld;
-            //    }
-            //}
-            //else
-            //{
-            //    PlayerRun();
-            //    MoveToPoint((EnemyManager.instance._listPoint[_randomPosition].transform.position));
-            //}
-            MoveToPoint((EnemyManager.instance._listPoint[_randomPosition].transform.position));
+                _shootTime -= Time.deltaTime;
+                if (_shootTime < 0)
+                {
+                    Playershoot();
+                    Shooting(EnemyManager.instance._listEnemy[pos].gameObject.transform.position);
+                    _shootTime = _shootTimeOld;
+                }
+            }
+            else
+            {
+                PlayerRun();
+                MoveToPoint((EnemyManager.instance._listPoint[_randomPosition].transform.position));
+            }
+            //MoveToPoint((EnemyManager.instance._listPoint[_randomPosition].transform.position));
         }
     }
 
@@ -80,7 +80,7 @@ public class EnemyController : BaseCharacterController, IDamageable
     void MoveToPlayer(float distance)
     {
         transform.LookAt(_positionPlayer.position);
-        if (distance > 33f)
+        if (distance > 30f)
         {
             PlayerRun();
             //  transform.position = Vector3.Lerp(transform.position, _moveToPlayer.position, speed * Time.deltaTime);
