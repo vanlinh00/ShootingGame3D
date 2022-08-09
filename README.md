@@ -29,3 +29,6 @@ Design Pattern:
 - `Singleton` for GameController and MusicController ...
 - `ObjectPolling` for bullets and all particles
 - `StatePattern` to change the state of the enemies
+
+FrameWork:
+- `DOTWeen` to move 
