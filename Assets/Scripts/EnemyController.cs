@@ -15,11 +15,11 @@ public class EnemyController : BaseCharacterController, IDamageable
     [SerializeField] CharacterController _characterController;
 
     private int _randomPosition;
-    float _shootTime = 1f;
+    float _shootTime = 3f;
     float _shootTimeOld;
     private void Awake()
     {
-        _shootTimeOld = 1f;
+        _shootTimeOld = 3f;
     }
     private void Start()
     {

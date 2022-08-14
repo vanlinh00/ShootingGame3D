@@ -1,0 +1,26 @@
+{
+  "guns":[
+       {  
+        "i":1,
+        "name":"AWM",
+        "damage":0.5,
+        "rateOfFire":0.5,
+	    "accuracy":0.3,
+        "priceForCoin":200,
+        "priceForDiamond":300
+        }
+     ],
+    "Knives":[
+       {  
+        "i":1,
+        "name":"AWM",
+        "damage":0.5,
+        "rateOfFire":0.5,
+	    "accuracy":0.3,
+        "priceForCoin":200,
+        "priceForDiamond":300
+        }
+     ]
+
+
+}
